@@ -14,7 +14,7 @@
     <nav class="space-x-4">
       <a href="index.html" class="hover:text-blue-500">ホーム</a>
       <a href="activities.html" class="hover:text-blue-500">活動</a>
-      <a href="projects.html" class="hover:text-blue-500">プロジェクト</a>
+      <a href="facility.html" class="hover:text-blue-500">施設</a>
       <a href="members.html" class="hover:text-blue-500">メンバー</a>
       <a href="contact.html" class="hover:text-blue-500">お問い合わせ</a>
     </nav>
@@ -22,10 +22,22 @@
 </header>
 <main class="pt-24 px-4">
 
-<section class="text-center py-16 bg-gradient-to-r from-blue-500 to-indigo-500 text-white">
-  <h2 class="text-4xl font-bold mb-4">未来を創る手を、ここで育てる</h2>
-  <p class="text-lg mb-6">ロボット × 電子工作 × プログラミング</p>
-  <a href="projects.html" class="bg-white text-blue-600 px-6 py-2 rounded-lg shadow hover:bg-gray-100">プロジェクトを見る</a>
+<section class="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
+  <!-- 背景画像 -->
+
+  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('images/hero.png');"></div>
+
+  <!-- オーバーレイ（透明度を下げて写真を見やすく） -->
+  <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/40"></div>
+
+  <!-- テキストコンテンツ -->
+  <div class="relative z-10 text-center px-4 flex justify-center">
+    <div class="inline-block bg-black/60 rounded-xl px-8 py-6 drop-shadow-lg">
+      <h2 class="text-4xl font-bold mb-4">未来を創る手を、ここで育てる</h2>
+      <p class="text-lg mb-6">ものづくり×高専生＝未来の技術者</p>
+      <a href="facility.html" class="bg-white text-blue-600 px-6 py-2 rounded-lg shadow hover:bg-gray-100">施設を見る</a>
+    </div>
+  </div>
 </section>
 </main>
 <footer class="bg-gray-800 text-white text-center py-4 mt-10">
