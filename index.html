@@ -46,7 +46,6 @@
 </footer>
 </body>
 <script>
-
   (function() {
     let count = 0;
     const title = document.getElementById('secret-title');
@@ -57,21 +56,21 @@
       flash.style.background = '#fff';
       flash.style.opacity = '0';
       flash.style.zIndex = '9999';
-      flash.style.transition = 'opacity 0.2s';
+      flash.style.transition = 'opacity 0.8s';
       document.body.appendChild(flash);
       setTimeout(() => {
         flash.style.opacity = '1';
         setTimeout(() => {
           flash.style.background = '#000';
-          flash.style.transition = 'background 0.5s, opacity 0.7s';
+          flash.style.transition = 'background 0.8s, opacity 0.8s';
           flash.style.opacity = '1';
           setTimeout(() => {
-            flash.style.opacity = '0';
+            // 黒のまま0.4秒静止
             setTimeout(() => {
               window.location.href = 'secret.html';
-            }, 300);
-          }, 700);
-        }, 200);
+            }, 400);
+          }, 800);
+        }, 400);
       }, 10);
     }
     if (title) {
