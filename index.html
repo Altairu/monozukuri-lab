@@ -65,12 +65,12 @@
           flash.style.transition = 'background 0.8s, opacity 0.8s';
           flash.style.opacity = '1';
           setTimeout(() => {
-            // 黒のまま0.4秒静止
+            // 黒のまま1.0秒静止
             setTimeout(() => {
               window.location.href = 'secret.html';
-            }, 400);
+            }, 1000);
           }, 800);
-        }, 400);
+        }, 800);
       }, 10);
     }
     if (title) {
