@@ -46,17 +46,41 @@
 </footer>
 </body>
 <script>
-  // 隠しボタン機能
+
   (function() {
     let count = 0;
     const title = document.getElementById('secret-title');
+    function showEffectAndGo() {
+      const flash = document.createElement('div');
+      flash.style.position = 'fixed';
+      flash.style.inset = '0';
+      flash.style.background = '#fff';
+      flash.style.opacity = '0';
+      flash.style.zIndex = '9999';
+      flash.style.transition = 'opacity 0.2s';
+      document.body.appendChild(flash);
+      setTimeout(() => {
+        flash.style.opacity = '1';
+        setTimeout(() => {
+          flash.style.background = '#000';
+          flash.style.transition = 'background 0.5s, opacity 0.7s';
+          flash.style.opacity = '1';
+          setTimeout(() => {
+            flash.style.opacity = '0';
+            setTimeout(() => {
+              window.location.href = 'secret.html';
+            }, 300);
+          }, 700);
+        }, 200);
+      }, 10);
+    }
     if (title) {
       title.addEventListener('click', function() {
         count++;
-        if (count >= 5) {
-          window.location.href = 'secret.html';
+        if (count >= 10) {
+          showEffectAndGo();
         }
-        setTimeout(() => { count = 0; }, 2000); // 2秒以内に連続で押さないとリセット
+        setTimeout(() => { count = 0; }, 2000);
       });
     }
   })();
