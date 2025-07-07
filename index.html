@@ -46,43 +46,8 @@
 </footer>
 </body>
 <script>
-  (function() {
-    let count = 0;
-    const title = document.getElementById('secret-title');
-    function showEffectAndGo() {
-      const flash = document.createElement('div');
-      flash.style.position = 'fixed';
-      flash.style.inset = '0';
-      flash.style.background = '#fff';
-      flash.style.opacity = '0';
-      flash.style.zIndex = '9999';
-      flash.style.transition = 'opacity 0.8s';
-      document.body.appendChild(flash);
-      setTimeout(() => {
-        flash.style.opacity = '1';
-        setTimeout(() => {
-          flash.style.background = '#000';
-          flash.style.transition = 'background 0.8s, opacity 0.8s';
-          flash.style.opacity = '1';
-          setTimeout(() => {
-            // 黒のまま1.0秒静止
-            setTimeout(() => {
-              window.location.href = 'secret.html';
-            }, 1000);
-          }, 800);
-        }, 800);
-      }, 10);
-    }
-    if (title) {
-      title.addEventListener('click', function() {
-        count++;
-        if (count >= 10) {
-          showEffectAndGo();
-        }
-        setTimeout(() => { count = 0; }, 2000);
-      });
-    }
-  })();
+
+eval("(function(){let c=0;const t=document.getElementById('secret-title');function e(){const n=document.createElement('div');n.position='fixed';n.inset='0';n.background='#fff';n.opacity='0';n.zIndex='9999';n.transition='opacity 0.8s';n.style.position='fixed';n.style.inset='0';n.style.background='#fff';n.style.opacity='0';n.style.zIndex='9999';n.style.transition='opacity 0.8s';document.body.appendChild(n);setTimeout(function(){n.style.opacity='1';setTimeout(function(){n.style.background='#000';n.style.transition='background 0.8s, opacity 0.8s';n.style.opacity='1';setTimeout(function(){setTimeout(function(){window.location.href='secret.html';},1000)},800)},800)},10)}if(t){t.addEventListener('click',function(){c++;if(c>=10){e()}setTimeout(function(){c=0},2000)})}})();");
 </script>
 </body>
 </html>
