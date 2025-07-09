@@ -28,19 +28,26 @@
   </div>
 </header>
 
-<main class="pt-24 px-4 max-w-2xl mx-auto">
-    <div class="container bg-white rounded-xl shadow-md p-8 mb-8">
-        <h1 class="text-2xl font-bold mb-2 text-center">Python実行環境</h1>
-        <div class="desc text-center mb-2">ブラウザ上でPythonコードを実行できます。主要な科学技術系パッケージも利用可能です。</div>
-        <div class="pkg-list text-center mb-4">利用可能パッケージ例：<b>matplotlib, numpy, pandas, scikit-learn, scipy</b> など</div>
-        <textarea id="code" class="w-full h-40 p-2 border rounded mb-4" placeholder="ここにPythonコードを入力してください。\n例: \nimport numpy as np\nprint(np.arange(10))\n\nimport matplotlib.pyplot as plt\nplt.plot([1,2,3],[1,4,9])\nplt.show()">print('Hello, Python!')</textarea>
+<main class="pt-24 px-4 max-w-3xl mx-auto">
+  <div class="bg-white rounded-xl shadow-md p-8 mb-8 flex flex-col md:flex-row gap-8">
+    <div class="flex-1 min-w-0">
+      <h1 class="text-2xl font-bold mb-2 text-center">Python実行環境</h1>
+      <div class="desc text-center mb-2">ブラウザ上でPythonコードを実行できます。主要な科学技術系パッケージも利用可能です。</div>
+      <div class="pkg-list text-center mb-4">利用可能パッケージ例：<b>matplotlib, numpy, pandas, scikit-learn, scipy</b> など</div>
+      <textarea id="code" class="w-full h-48 p-2 border rounded mb-4" placeholder="ここにPythonコードを入力してください。\n例: \nimport numpy as np\nprint(np.arange(10))\n\nimport matplotlib.pyplot as plt\nplt.plot([1,2,3],[1,4,9])\nplt.show()">print('Hello, Python!')</textarea>
+      <div class="flex gap-2 mb-4">
         <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700" id="run">実行</button>
-        <div id="loading" class="loading text-blue-700 font-bold text-center my-2" style="display:none;">Pyodideをロード中...</div>
-        <div class="mt-4">
-            <div class="font-bold mb-1">出力:</div>
-            <div id="output"></div>
-        </div>
+        <button class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700" id="debug">デバッグ</button>
+      </div>
+      <div id="loading" class="loading text-blue-700 font-bold text-center my-2" style="display:none;">Pyodideをロード中...</div>
     </div>
+    <div class="flex-1 min-w-0">
+      <div class="font-bold mb-1">出力:</div>
+      <div id="output" class="mb-4"></div>
+      <div class="font-bold mb-1">matplotlib画像:</div>
+      <div id="images"></div>
+    </div>
+  </div>
 </main>
 <footer class="bg-gray-800 text-white text-center py-4 mt-10">
   <p>&copy; 2025 舞鶴高専 ものつくりラボ</p>
@@ -64,7 +71,11 @@ async function initPyodide() {
 
 initPyodide();
 
-document.getElementById('run').onclick = async function() {
+function clearImages() {
+  document.getElementById('images').innerHTML = '';
+}
+
+async function runPython(debug=false) {
   if (!pyodideReady) {
     loadingDiv.innerText = 'Pyodideをロード中...しばらくお待ちください';
     loadingDiv.style.display = '';
@@ -72,16 +83,20 @@ document.getElementById('run').onclick = async function() {
   }
   let code = document.getElementById("code").value;
   document.getElementById("output").innerText = '';
-  document.querySelectorAll("canvas, img.matplotlib").forEach(el => el.remove());
+  clearImages();
   let result = "";
   try {
     pyodide.setStdout({ batched: (msg) => { result += msg + "\n"; } });
     pyodide.setStderr({ batched: (msg) => { result += msg + "\n"; } });
+    if(debug) {
+      result += '--- デバッグ実行 ---\n';
+    }
     await pyodide.runPythonAsync(code);
   } catch (error) {
     result += error;
   }
   document.getElementById("output").innerText = result;
+  // matplotlib画像の表示
   if (pyodide._module.FS && pyodide._module.FS.analyzePath) {
     try {
       let files = pyodide._module.FS.readdir('/tmp');
@@ -91,12 +106,17 @@ document.getElementById('run').onclick = async function() {
         let url = URL.createObjectURL(blob);
         let img = document.createElement('img');
         img.src = url;
-        img.className = 'matplotlib';
-        document.querySelector('.container').appendChild(img);
+        img.className = 'matplotlib my-2';
+        document.getElementById('images').appendChild(img);
       });
     } catch(e) {}
   }
-};
+}
+
+document.getElementById('run').onclick = () => runPython(false);
+document.getElementById('debug').onclick = () => runPython(true);
+
+</script>
 </script>
 </body>
 </html>
