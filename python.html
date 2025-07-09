@@ -37,7 +37,6 @@
       <textarea id="code" class="w-full h-48 p-2 border rounded mb-4" placeholder="ここにPythonコードを入力してください。\n例: \nimport numpy as np\nprint(np.arange(10))\n\nimport matplotlib.pyplot as plt\nplt.plot([1,2,3],[1,4,9])\nplt.show()">print('Hello, Python!')</textarea>
       <div class="flex gap-2 mb-4">
         <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700" id="run">実行</button>
-        <button class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700" id="debug">デバッグ</button>
       </div>
       <div id="loading" class="loading text-blue-700 font-bold text-center my-2" style="display:none;">Pyodideをロード中...</div>
     </div>
@@ -121,8 +120,8 @@ async function runPython(debug=false) {
   }
 }
 
+
 document.getElementById('run').onclick = () => runPython(false);
-document.getElementById('debug').onclick = () => runPython(true);
 
 </script>
 </script>
