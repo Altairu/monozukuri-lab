@@ -107,9 +107,17 @@ async function runPython(debug=false) {
         let img = document.createElement('img');
         img.src = url;
         img.className = 'matplotlib my-2';
+        // 画像欄の直下に追加（親要素のimages内）
         document.getElementById('images').appendChild(img);
       });
-    } catch(e) {}
+      // 画像欄が空でなければ、画像欄を表示、空なら非表示
+      const imagesDiv = document.getElementById('images');
+      imagesDiv.style.display = imagesDiv.children.length > 0 ? '' : 'none';
+    } catch(e) {
+      document.getElementById('images').style.display = 'none';
+    }
+  } else {
+    document.getElementById('images').style.display = 'none';
   }
 }
 
