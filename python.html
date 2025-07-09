@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python実行環境（ブラウザ）</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #f3f4f6; }
+    #output { white-space: pre-wrap; background: #222; color: #fff; padding: 1em; border-radius: 8px; min-height: 4em; }
+    textarea { font-family: 'Consolas', 'monospace'; }
+  </style>
+</head>
+<body class="text-gray-800">
+<header class="bg-white shadow-md fixed top-0 w-full z-50">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">Python実行環境（ブラウザ）</h1>
+    <nav class="space-x-4">
+      <a href="index.html" class="hover:text-blue-500">ホーム</a>
+      <a href="activities.html" class="hover:text-blue-500">活動</a>
+      <a href="facility.html" class="hover:text-blue-500">施設</a>
+      <a href="members.html" class="hover:text-blue-500">スタッフ</a>
+      <a href="contact.html" class="hover:text-blue-500">お問い合わせ</a>
+      <a href="python.html" class="hover:text-blue-500">プログラミング</a>
+    </nav>
+  </div>
+</header>
+
+<main class="pt-24 px-4 max-w-2xl mx-auto">
+    <div class="container bg-white rounded-xl shadow-md p-8 mb-8">
+        <h1 class="text-2xl font-bold mb-2 text-center">Python実行環境</h1>
+        <div class="desc text-center mb-2">ブラウザ上でPythonコードを実行できます。主要な科学技術系パッケージも利用可能です。</div>
+        <div class="pkg-list text-center mb-4">利用可能パッケージ例：<b>matplotlib, numpy, pandas, scikit-learn, scipy</b> など</div>
+        <textarea id="code" class="w-full h-40 p-2 border rounded mb-4" placeholder="ここにPythonコードを入力してください。\n例: \nimport numpy as np\nprint(np.arange(10))\n\nimport matplotlib.pyplot as plt\nplt.plot([1,2,3],[1,4,9])\nplt.show()">print('Hello, Python!')</textarea>
+        <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700" id="run">実行</button>
+        <div id="loading" class="loading text-blue-700 font-bold text-center my-2" style="display:none;">Pyodideをロード中...</div>
+        <div class="mt-4">
+            <div class="font-bold mb-1">出力:</div>
+            <div id="output"></div>
+        </div>
+    </div>
+</main>
+<footer class="bg-gray-800 text-white text-center py-4 mt-10">
+  <p>&copy; 2025 舞鶴高専 ものつくりラボ</p>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
+<script>
+let pyodideReady = false;
+let pyodide = null;
+let loadingDiv = document.getElementById('loading');
+
+async function initPyodide() {
+  loadingDiv.style.display = '';
+  loadingDiv.innerText = 'Pyodideをロード中...';
+  pyodide = await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.1/full/" });
+  await pyodide.loadPackage(["matplotlib", "numpy", "pandas", "scikit-learn", "scipy"]);
+  pyodideReady = true;
+  loadingDiv.style.display = 'none';
+}
+
+initPyodide();
+
+document.getElementById('run').onclick = async function() {
+  if (!pyodideReady) {
+    loadingDiv.innerText = 'Pyodideをロード中...しばらくお待ちください';
+    loadingDiv.style.display = '';
+    return;
+  }
+  let code = document.getElementById("code").value;
+  document.getElementById("output").innerText = '';
+  document.querySelectorAll("canvas, img.matplotlib").forEach(el => el.remove());
+  let result = "";
+  try {
+    pyodide.setStdout({ batched: (msg) => { result += msg + "\n"; } });
+    pyodide.setStderr({ batched: (msg) => { result += msg + "\n"; } });
+    await pyodide.runPythonAsync(code);
+  } catch (error) {
+    result += error;
+  }
+  document.getElementById("output").innerText = result;
+  if (pyodide._module.FS && pyodide._module.FS.analyzePath) {
+    try {
+      let files = pyodide._module.FS.readdir('/tmp');
+      files.filter(f => f.endsWith('.png')).forEach(f => {
+        let data = pyodide.FS.readFile('/tmp/' + f);
+        let blob = new Blob([data], {type: 'image/png'});
+        let url = URL.createObjectURL(blob);
+        let img = document.createElement('img');
+        img.src = url;
+        img.className = 'matplotlib';
+        document.querySelector('.container').appendChild(img);
+      });
+    } catch(e) {}
+  }
+};
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python実行環境 | 舞鶴高専ものつくりラボ</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: #f7fafd;
+            font-family: 'Segoe UI', 'Meiryo', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px #0001;
+            padding: 32px 24px 24px 24px;
+        }
+        h1 {
+            text-align: center;
+            color: #1a237e;
+            margin-bottom: 8px;
+        }
+        .desc {
+            text-align: center;
+            color: #444;
+            margin-bottom: 24px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 180px;
+            font-size: 1.1em;
+            font-family: 'Fira Mono', 'Consolas', monospace;
+            border: 1px solid #b0bec5;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+            background: #f4f8fb;
+            resize: vertical;
+        }
+        .btn {
+            background: linear-gradient(90deg, #1976d2, #64b5f6);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 28px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-bottom: 16px;
+            transition: background 0.2s;
+        }
+        .btn:active {
+            background: #1565c0;
+        }
+        #output {
+            background: #222;
+            color: #e0e0e0;
+            border-radius: 8px;
+            padding: 16px;
+            min-height: 80px;
+            font-family: 'Fira Mono', 'Consolas', monospace;
+            margin-top: 8px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        .loading {
+            color: #1976d2;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .matplotlib {
+            display: block;
+            margin: 18px auto 0 auto;
+            max-width: 100%;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0002;
+        }
+        .pkg-list {
+            font-size: 0.98em;
+            color: #555;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+</html>
