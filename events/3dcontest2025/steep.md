@@ -23,13 +23,11 @@ ISO 10303 規格に基づいた **3D CADデータの交換用フォーマット*
 ![alt text](image.png)
 
 1. メニューから **「ファイル → 変換して保存」** を選択
-![alt text](image-1.png)
+![alt text](image-3.png)
 
-2. オプションを選択し，以下の設定に
+![alt text](image-4.png)
 
-![alt text](image-2.png)
-
-3. **保存** をクリック
+2. **保存** をクリック
 
 
 ### SolidWorks
