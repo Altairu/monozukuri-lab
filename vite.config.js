@@ -23,6 +23,7 @@ export default defineConfig({
         members: resolve(__dirname, 'members.html'),
         contact: resolve(__dirname, 'contact.html'),
         python: resolve(__dirname, 'python.html'),
+        game: resolve(__dirname, 'game.html'),
         secret: resolve(__dirname, 'secret.html'),
         secret2: resolve(__dirname, 'secret2.html'),
         '3dcontest2025': resolve(__dirname, 'events/3dcontest2025.html'),
