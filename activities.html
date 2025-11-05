@@ -11,8 +11,15 @@
 <body class="bg-gray-100 text-gray-800">
 <header class="bg-white shadow-md fixed top-0 w-full z-50">
   <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-    <h1 class="text-xl font-bold">舞鶴高専 ものつくりラボ</h1>
-    <nav class="space-x-4">
+    <h1 class="text-lg sm:text-xl font-bold whitespace-nowrap overflow-hidden text-ellipsis">舞鶴高専 ものつくりラボ</h1>
+    <!-- ハンバーガーメニューボタン (モバイル) -->
+    <button id="menu-toggle" class="md:hidden flex flex-col gap-1 p-2" aria-label="メニュー">
+      <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+      <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+      <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+    </button>
+    <!-- デスクトップナビゲーション -->
+    <nav class="hidden md:flex space-x-4">
       <a href="index.html" class="hover:text-blue-500">ホーム</a>
       <a href="activities.html" class="hover:text-blue-500">活動</a>
       <a href="facility.html" class="hover:text-blue-500">施設</a>
@@ -21,6 +28,17 @@
       <a href="game.html" class="hover:text-blue-500">ゲーム</a>
     </nav>
   </div>
+  <!-- モバイルメニュー -->
+  <nav id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <div class="px-4 py-2 space-y-2">
+      <a href="index.html" class="block py-2 hover:text-blue-500">ホーム</a>
+      <a href="activities.html" class="block py-2 hover:text-blue-500">活動</a>
+      <a href="facility.html" class="block py-2 hover:text-blue-500">施設</a>
+      <a href="members.html" class="block py-2 hover:text-blue-500">スタッフ</a>
+      <a href="contact.html" class="block py-2 hover:text-blue-500">お問い合わせ</a>
+      <a href="game.html" class="block py-2 hover:text-blue-500">ゲーム</a>
+    </div>
+  </nav>
 </header>
 <main class="pt-24 px-4">
 <h2 class="text-2xl font-bold mb-4">通常活動</h2>
@@ -66,5 +84,16 @@
 <footer class="bg-gray-800 text-white text-center py-4 mt-10">
   <p>&copy; 2025 舞鶴高専 ものつくりラボ</p>
 </footer>
+<script>
+// ハンバーガーメニューの制御
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+
+if (menuToggle && mobileMenu) {
+  menuToggle.addEventListener('click', function() {
+    mobileMenu.classList.toggle('hidden');
+  });
+}
+</script>
 </body>
 </html>

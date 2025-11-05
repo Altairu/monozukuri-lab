@@ -11,8 +11,15 @@
 <body class="bg-gray-100 text-gray-800">
 <header class="bg-white shadow-md fixed top-0 w-full z-50">
   <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-    <h1 id="secret-title" class="text-xl font-bold cursor-pointer select-none">舞鶴高専 ものつくりラボ</h1>
-    <nav class="space-x-4">
+    <h1 id="secret-title" class="text-lg sm:text-xl font-bold cursor-pointer select-none whitespace-nowrap overflow-hidden text-ellipsis">舞鶴高専 ものつくりラボ</h1>
+    <!-- ハンバーガーメニューボタン (モバイル) -->
+    <button id="menu-toggle" class="md:hidden flex flex-col gap-1 p-2" aria-label="メニュー">
+      <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+      <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+      <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+    </button>
+    <!-- デスクトップナビゲーション -->
+    <nav class="hidden md:flex space-x-4">
       <a href="index.html" class="hover:text-blue-500">ホーム</a>
       <a href="activities.html" class="hover:text-blue-500">活動</a>
       <a href="facility.html" class="hover:text-blue-500">施設</a>
@@ -21,10 +28,21 @@
       <a href="game.html" class="hover:text-blue-500">ゲーム</a>
     </nav>
   </div>
+  <!-- モバイルメニュー -->
+  <nav id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <div class="px-4 py-2 space-y-2">
+      <a href="index.html" class="block py-2 hover:text-blue-500">ホーム</a>
+      <a href="activities.html" class="block py-2 hover:text-blue-500">活動</a>
+      <a href="facility.html" class="block py-2 hover:text-blue-500">施設</a>
+      <a href="members.html" class="block py-2 hover:text-blue-500">スタッフ</a>
+      <a href="contact.html" class="block py-2 hover:text-blue-500">お問い合わせ</a>
+      <a href="game.html" class="block py-2 hover:text-blue-500">ゲーム</a>
+    </div>
+  </nav>
 </header>
 <main class="pt-24 px-4">
 
-<section class="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
+<section class="relative h-[400px] sm:h-[500px] flex items-center justify-center text-white overflow-hidden">
   <!-- 背景画像 -->
 
   <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('images/hero.png');"></div>
@@ -34,19 +52,21 @@
 
   <!-- テキストコンテンツ -->
   <div class="relative z-10 text-center px-4 flex justify-center">
-    <div class="inline-block bg-black/60 rounded-xl px-8 py-6 drop-shadow-lg">
-      <h2 class="text-4xl font-bold mb-4">未来を創る手を、ここで育てる</h2>
-      <p class="text-lg mb-6">ものづくり×高専生＝未来の技術者</p>
-      <a href="facility.html" class="bg-white text-blue-600 px-6 py-2 rounded-lg shadow hover:bg-gray-100">施設を見る</a>
+    <div class="inline-block bg-black/60 rounded-xl px-4 sm:px-8 py-4 sm:py-6 drop-shadow-lg">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">未来を創る手を、<br class="sm:hidden">ここで育てる</h2>
+      <p class="text-base sm:text-lg mb-4 sm:mb-6">ものづくり×高専生＝<br class="sm:hidden">未来の技術者</p>
+      <a href="facility.html" class="inline-block bg-white text-blue-600 px-4 sm:px-6 py-2 rounded-lg shadow hover:bg-gray-100 text-sm sm:text-base">施設を見る</a>
     </div>
   </div>
 </section>
   <!-- イベント告知バナー -->
-  <div class="max-w-xl mx-auto mt-12 mb-8">
-    <a href="events/3dcontest2025.html" class="block bg-blue-600 hover:bg-blue-700 text-white text-center text-lg font-bold rounded-xl shadow-lg px-6 py-5 transition-all duration-200 ">
-      夏休み 3Dプリンター活用 自由課題コンテスト 2025<br>
-      <span class="text-yellow-300 text-xl font-extrabold"> 審査結果発表</span>
-      <span class="ml-2 text-white text-base align-middle">▶ 詳細を見る</span>
+  <div class="max-w-xl mx-auto mt-8 sm:mt-12 mb-6 sm:mb-8">
+    <a href="events/3dcontest2025.html" class="block bg-blue-600 hover:bg-blue-700 text-white text-center text-base sm:text-lg font-bold rounded-xl shadow-lg px-4 sm:px-6 py-4 sm:py-5 transition-all duration-200">
+      <div class="leading-relaxed">夏休み 3Dプリンター活用<br class="sm:hidden"> 自由課題コンテスト 2025</div>
+      <div class="mt-2">
+        <span class="text-yellow-300 text-lg sm:text-xl font-extrabold">審査結果発表</span>
+        <span class="ml-2 text-white text-sm sm:text-base align-middle">▶ 詳細を見る</span>
+      </div>
     </a>
   </div>
 </main>
@@ -55,6 +75,15 @@
 </footer>
 </body>
 <script>
+// ハンバーガーメニューの制御
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+
+if (menuToggle && mobileMenu) {
+  menuToggle.addEventListener('click', function() {
+    mobileMenu.classList.toggle('hidden');
+  });
+}
 
 eval("(function(){let c=0;const t=document.getElementById('secret-title');function e(){const n=document.createElement('div');n.position='fixed';n.inset='0';n.background='#fff';n.opacity='0';n.zIndex='9999';n.transition='opacity 0.8s';n.style.position='fixed';n.style.inset='0';n.style.background='#fff';n.style.opacity='0';n.style.zIndex='9999';n.style.transition='opacity 0.8s';document.body.appendChild(n);setTimeout(function(){n.style.opacity='1';setTimeout(function(){n.style.background='#000';n.style.transition='background 0.8s, opacity 0.8s';n.style.opacity='1';setTimeout(function(){setTimeout(function(){window.location.href='secret.html';},1000)},800)},800)},10)}if(t){t.addEventListener('click',function(){c++;if(c>=10){e()}setTimeout(function(){c=0},2000)})}})();");
 </script>
