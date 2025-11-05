@@ -29,7 +29,7 @@
     </nav>
   </div>
   <!-- モバイルメニュー -->
-  <nav id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+  <nav id="mobile-menu" class="hidden bg-white border-t border-gray-200">
     <div class="px-4 py-2 space-y-2">
       <a href="index.html" class="block py-2 hover:text-blue-500">ホーム</a>
       <a href="activities.html" class="block py-2 hover:text-blue-500">活動</a>
@@ -91,16 +91,6 @@
 <footer class="bg-gray-800 text-white text-center py-4 mt-10">
   <p>&copy; 2025 舞鶴高専 ものつくりラボ</p>
 </footer>
-<script>
-// ハンバーガーメニューの制御
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-
-if (menuToggle && mobileMenu) {
-  menuToggle.addEventListener('click', function() {
-    mobileMenu.classList.toggle('hidden');
-  });
-}
-</script>
+<script src="js/mobile-menu.js"></script>
 </body>
 </html>

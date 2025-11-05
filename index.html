@@ -29,7 +29,7 @@
     </nav>
   </div>
   <!-- モバイルメニュー -->
-  <nav id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+  <nav id="mobile-menu" class="hidden bg-white border-t border-gray-200">
     <div class="px-4 py-2 space-y-2">
       <a href="index.html" class="block py-2 hover:text-blue-500">ホーム</a>
       <a href="activities.html" class="block py-2 hover:text-blue-500">活動</a>
@@ -53,8 +53,8 @@
   <!-- テキストコンテンツ -->
   <div class="relative z-10 text-center px-4 flex justify-center">
     <div class="inline-block bg-black/60 rounded-xl px-4 sm:px-8 py-4 sm:py-6 drop-shadow-lg">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">未来を創る手を、<br class="sm:hidden">ここで育てる</h2>
-      <p class="text-base sm:text-lg mb-4 sm:mb-6">ものづくり×高専生＝<br class="sm:hidden">未来の技術者</p>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4" style="word-break: keep-all;">未来を創る手を、ここで育てる</h2>
+      <p class="text-base sm:text-lg mb-4 sm:mb-6" style="word-break: keep-all;">ものづくり×高専生＝未来の技術者</p>
       <a href="facility.html" class="inline-block bg-white text-blue-600 px-4 sm:px-6 py-2 rounded-lg shadow hover:bg-gray-100 text-sm sm:text-base">施設を見る</a>
     </div>
   </div>
@@ -62,7 +62,7 @@
   <!-- イベント告知バナー -->
   <div class="max-w-xl mx-auto mt-8 sm:mt-12 mb-6 sm:mb-8">
     <a href="events/3dcontest2025.html" class="block bg-blue-600 hover:bg-blue-700 text-white text-center text-base sm:text-lg font-bold rounded-xl shadow-lg px-4 sm:px-6 py-4 sm:py-5 transition-all duration-200">
-      <div class="leading-relaxed">夏休み 3Dプリンター活用<br class="sm:hidden"> 自由課題コンテスト 2025</div>
+      <div class="leading-relaxed" style="word-break: keep-all;">夏休み 3Dプリンター活用 自由課題コンテスト 2025</div>
       <div class="mt-2">
         <span class="text-yellow-300 text-lg sm:text-xl font-extrabold">審査結果発表</span>
         <span class="ml-2 text-white text-sm sm:text-base align-middle">▶ 詳細を見る</span>
@@ -73,18 +73,8 @@
 <footer class="bg-gray-800 text-white text-center py-4 mt-10">
   <p>&copy; 2025 舞鶴高専 ものつくりラボ</p>
 </footer>
-</body>
+<script src="js/mobile-menu.js"></script>
 <script>
-// ハンバーガーメニューの制御
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-
-if (menuToggle && mobileMenu) {
-  menuToggle.addEventListener('click', function() {
-    mobileMenu.classList.toggle('hidden');
-  });
-}
-
 eval("(function(){let c=0;const t=document.getElementById('secret-title');function e(){const n=document.createElement('div');n.position='fixed';n.inset='0';n.background='#fff';n.opacity='0';n.zIndex='9999';n.transition='opacity 0.8s';n.style.position='fixed';n.style.inset='0';n.style.background='#fff';n.style.opacity='0';n.style.zIndex='9999';n.style.transition='opacity 0.8s';document.body.appendChild(n);setTimeout(function(){n.style.opacity='1';setTimeout(function(){n.style.background='#000';n.style.transition='background 0.8s, opacity 0.8s';n.style.opacity='1';setTimeout(function(){setTimeout(function(){window.location.href='secret.html';},1000)},800)},800)},10)}if(t){t.addEventListener('click',function(){c++;if(c>=10){e()}setTimeout(function(){c=0},2000)})}})();");
 </script>
 </body>
