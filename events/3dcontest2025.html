@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,11 +9,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body, html {
+    body,
+    html {
       font-family: 'Noto Sans JP', 'Meiryo', 'sans-serif';
       letter-spacing: 0.01em;
     }
-    h2, h3, h4 {
+
+    h2,
+    h3,
+    h4 {
       letter-spacing: 0.02em;
     }
   </style>
@@ -49,200 +54,214 @@
   </nav>
 </header>
 
-  <main class="pt-32 pb-16 container mx-auto px-4 space-y-16">
+<main class="pt-32 pb-16 container mx-auto px-4 space-y-16">
 
-    <!-- タイトル＆キャッチ -->
-    <section class="text-center">
-      <h2 class="text-4xl font-extrabold text-blue-700 mb-6 tracking-wide drop-shadow">夏休み 3Dプリンター活用 自由課題コンテスト 2025</h2>
-      <p class="text-xl text-gray-700 font-medium mb-2">3Dプリンターでオリジナル作品を制作し、<br class='md:hidden'>アイデアと技術力を競う自由研究コンテスト。</p>
-      <p class="text-lg text-blue-600 font-semibold">初心者も大歓迎！</p>
-    </section>
+  <!-- タイトル＆キャッチ -->
+  <section class="text-center">
+    <h2 class="text-4xl font-extrabold text-blue-700 mb-6 tracking-wide drop-shadow">夏休み 3Dプリンター活用 自由課題コンテスト 2025</h2>
+    <p class="text-xl text-gray-700 font-medium mb-2">3Dプリンターでオリジナル作品を制作し、<br class='md:hidden'>アイデアと技術力を競う自由研究コンテスト。
+    </p>
+    <p class="text-lg text-blue-600 font-semibold">初心者も大歓迎！</p>
+  </section>
 
-    <!-- 開催概要 -->
-    <section class="bg-white rounded-2xl shadow p-8 md:p-12 mb-2">
-      <h3 class="text-2xl font-bold text-blue-700 mb-6 border-b-2 border-blue-100 pb-2 tracking-wide">開催概要</h3>
-      <p class="text-lg text-gray-800 mb-8 leading-relaxed">
-        夏休みの自由研究・課題制作として、3Dプリンターを活用したオリジナル作品を大募集します。<br>
-        技術力だけでなく、アイデアやデザイン性も評価されるコンテストです。
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-800">
-        <div>
-          <h4 class="font-semibold mb-1 text-blue-700">応募期間</h4>
-          <p class="text-base">2025年8月8日〜9月30日23:59まで</p>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-1 text-blue-700">対象</h4>
-          <p class="text-base">舞鶴高専学生（本科・専攻科）</p>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-1 text-blue-700">提出方法</h4>
-          <p class="text-base">設計ファイル（.step）、コンセプトシートを専用フォームで提出</p>
-        </div>
+  <!-- 開催概要 -->
+  <section class="bg-white rounded-2xl shadow p-8 md:p-12 mb-2">
+    <h3 class="text-2xl font-bold text-blue-700 mb-6 border-b-2 border-blue-100 pb-2 tracking-wide">開催概要</h3>
+    <p class="text-lg text-gray-800 mb-8 leading-relaxed">
+      夏休みの自由研究・課題制作として、3Dプリンターを活用したオリジナル作品を大募集します。<br>
+      技術力だけでなく、アイデアやデザイン性も評価されるコンテストです。
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-800">
+      <div>
+        <h4 class="font-semibold mb-1 text-blue-700">応募期間</h4>
+        <p class="text-base">2025年8月8日〜9月30日23:59まで</p>
       </div>
-    </section>
-
-    <!-- 部門紹介 -->
-    <section>
-      <h3 class="text-2xl font-bold text-blue-700 mb-6 border-b-2 border-blue-100 pb-2 tracking-wide">部門紹介</h3>
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <!-- IoT部門 -->
-        <div class="bg-white rounded-2xl shadow hover:shadow-lg transition p-6 border border-blue-100">
-          <h4 class="text-xl font-semibold text-blue-600 mb-2">IoT部門</h4>
-          <p class="text-gray-600 mb-4">「わたしの◯◯をスマートに！」</p>
-          <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
-            <li>例：温度・湿度モニター付きプランター、リモコン操作家具など</li>
-            <li><strong>評価ポイント</strong>：機能性・アイデアの独創性・プログラミング完成度</li>
-          </ul>
-        </div>
-        <!-- 動くおもちゃ部門 -->
-        <div class="bg-white rounded-2xl shadow hover:shadow-lg transition p-6 border border-blue-100">
-          <h4 class="text-xl font-semibold text-blue-600 mb-2">動くおもちゃ部門</h4>
-          <p class="text-gray-600 mb-4">「うごけ、ひらめき！」</p>
-          <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
-            <li>例：ビー玉が走るピタゴラ装置、歯車アニメーションなど</li>
-            <li><strong>評価ポイント</strong>：動作のスムーズさ・ユニークさ・組み立てやすさ</li>
-          </ul>
-        </div>
-        <!-- 造形部門 -->
-        <div class="bg-white rounded-2xl shadow hover:shadow-lg transition p-6 border border-blue-100">
-          <h4 class="text-xl font-semibold text-blue-600 mb-2">造形部門</h4>
-          <p class="text-gray-600 mb-4">「創造をカタチに！」</p>
-          <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
-            <li>例：未来の街並み模型、オリジナルキャラフィギュアなど</li>
-            <li><strong>評価ポイント</strong>：デザイン性・精密さ・独創性</li>
-          </ul>
-        </div>
+      <div>
+        <h4 class="font-semibold mb-1 text-blue-700">対象</h4>
+        <p class="text-base">舞鶴高専学生（本科・専攻科）</p>
       </div>
-    </section>
+      <div>
+        <h4 class="font-semibold mb-1 text-blue-700">提出方法</h4>
+        <p class="text-base">設計ファイル（.step）、コンセプトシートを専用フォームで提出</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- 審査・表彰 -->
-    <section class="bg-white rounded-2xl shadow p-8 md:p-12 mb-2">
-      <h3 class="text-2xl font-bold text-blue-700 mb-4 border-b-2 border-blue-100 pb-2 tracking-wide">審査・表彰</h3>
-      <ul class="list-disc list-inside space-y-2 text-gray-800 text-base">
-        <li><strong>最優秀賞（1名）</strong>、各部門ごとに<strong>優秀賞（各1名） </strong>を選出</li>
-        <li>入賞者には<strong>副賞</strong>を贈呈</li>
-      </ul>
-    </section>
+  <!-- 部門紹介 -->
+  <section>
+    <h3 class="text-2xl font-bold text-blue-700 mb-6 border-b-2 border-blue-100 pb-2 tracking-wide">部門紹介</h3>
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <!-- IoT部門 -->
+      <div class="bg-white rounded-2xl shadow hover:shadow-lg transition p-6 border border-blue-100">
+        <h4 class="text-xl font-semibold text-blue-600 mb-2">IoT部門</h4>
+        <p class="text-gray-600 mb-4">「わたしの◯◯をスマートに！」</p>
+        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+          <li>例：温度・湿度モニター付きプランター、リモコン操作家具など</li>
+          <li><strong>評価ポイント</strong>：機能性・アイデアの独創性・プログラミング完成度</li>
+        </ul>
+      </div>
+      <!-- 動くおもちゃ部門 -->
+      <div class="bg-white rounded-2xl shadow hover:shadow-lg transition p-6 border border-blue-100">
+        <h4 class="text-xl font-semibold text-blue-600 mb-2">動くおもちゃ部門</h4>
+        <p class="text-gray-600 mb-4">「うごけ、ひらめき！」</p>
+        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+          <li>例：ビー玉が走るピタゴラ装置、歯車アニメーションなど</li>
+          <li><strong>評価ポイント</strong>：動作のスムーズさ・ユニークさ・組み立てやすさ</li>
+        </ul>
+      </div>
+      <!-- 造形部門 -->
+      <div class="bg-white rounded-2xl shadow hover:shadow-lg transition p-6 border border-blue-100">
+        <h4 class="text-xl font-semibold text-blue-600 mb-2">造形部門</h4>
+        <p class="text-gray-600 mb-4">「創造をカタチに！」</p>
+        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+          <li>例：未来の街並み模型、オリジナルキャラフィギュアなど</li>
+          <li><strong>評価ポイント</strong>：デザイン性・精密さ・独創性</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <!-- 応募方法 -->
-    <section class="bg-white rounded-2xl shadow p-8 md:p-12 mb-2">
-      <h3 class="text-2xl font-bold text-blue-700 mb-4 border-b-2 border-blue-100 pb-2 tracking-wide">応募方法</h3>
-      <ol class="list-decimal list-inside space-y-4 text-gray-800 text-base ml-4">
-        <li>
-          <strong>作品データ準備</strong><br>
-          CADで設計し、STEPファイルを用意。<br>
-          <a href="3dcontest2025/steep.html" class="inline-block mt-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-blue-200 transition text-sm font-semibold" target="_blank">
-            STEPファイルの作り方はこちら
-          </a><br>
-          コンセプトシートにはテーマ・制作意図・使用パーツ・プログラム概要などを記載。<br>
-          以下に最低限のコンセプトシートのサンプルがあります。よろしければご覧ください。<br>
-          <a href="3dcontest2025/example.html" class="inline-block mt-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition text-sm font-semibold" target="_blank">
-            📋 コンセプトシート サンプル
-          </a>
-        </li>
-        <li>
-          <strong>応募フォーム</strong>で提出<br>
-          <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mt-2 mb-3">
-            <p class="text-sm text-yellow-800">
-              ⚠️<strong>注意：</strong>g.maizuru-ct.ac.jpのアカウントでログインして応募してください。
-            </p>
-          </div>
-          <a href="https://forms.gle/uYh57ndEar9BdZsr7" class="inline-block mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition text-sm font-semibold" target="_blank" rel="noopener">
-            📝 応募フォームはこちら
-          </a>
-        </li>
-        <li>
-          <strong>審査結果発表</strong>：2025年10月中、ウェブサイトで通知 
-        </li>
-      </ol>
-    </section>
+  <!-- 審査・表彰 -->
+  <section class="bg-white rounded-2xl shadow p-8 md:p-12 mb-2">
+    <h3 class="text-2xl font-bold text-blue-700 mb-4 border-b-2 border-blue-100 pb-2 tracking-wide">審査・表彰</h3>
+    <ul class="list-disc list-inside space-y-2 text-gray-800 text-base">
+      <li><strong>最優秀賞（1名）</strong>、各部門ごとに<strong>優秀賞（各1名） </strong>を選出</li>
+      <li>入賞者には<strong>副賞</strong>を贈呈</li>
+    </ul>
+  </section>
 
-    <!-- 審査結果 -->
-    <section class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl shadow-lg p-8 md:p-12 mb-2 border-2 border-yellow-300">
-      <h3 class="text-2xl font-bold text-orange-700 mb-6 border-b-2 border-orange-200 pb-2 tracking-wide flex items-center">
-        🏆 審査結果発表
-      </h3>
-      
-      <div class="space-y-6">
-        <!-- 最優秀賞 -->
-        <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-yellow-500">
-          <div class="flex items-center mb-3">
-            <span class="text-3xl mr-3">👑</span>
-            <h4 class="text-2xl font-bold text-yellow-600">最優秀賞</h4>
-          </div>
-          <div class="ml-12">
-            <p class="text-lg font-semibold text-gray-800 mb-1">山城さん</p>
-            <p class="text-gray-700">
-              <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold mr-2">造形部門</span>
-              <span class="text-base">原神：ヨォーヨの神の目</span>
-            </p>
-            <p class="text-sm text-gray-600 mt-2">※造形部門 優秀賞兼任</p>
-          </div>
-        </div>
-
-        <!-- 優秀賞 -->
-        <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
-          <div class="flex items-center mb-3">
-            <span class="text-3xl mr-3">🥈</span>
-            <h4 class="text-2xl font-bold text-blue-600">優秀賞</h4>
-          </div>
-          <div class="ml-12 space-y-4">
-            <!-- 動くおもちゃ部門 -->
-            <div class="pb-4 border-b border-gray-200">
-              <p class="text-lg font-semibold text-gray-800 mb-1">斉藤さん</p>
-              <p class="text-gray-700">
-                <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold mr-2">動くおもちゃ部門</span>
-                <span class="text-base">脱進機キーホルダー</span>
-              </p>
-            </div>
-            <!-- IoT部門 -->
-            <div>
-              <p class="text-lg font-semibold text-gray-800 mb-1">山城さん</p>
-              <p class="text-gray-700">
-                <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold mr-2">IoT部門</span>
-                <span class="text-base">部室をスマートロックに</span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 受賞者へのメッセージ -->
-        <div class="bg-blue-50 rounded-lg p-4 mt-6">
-          <p class="text-gray-700 text-center">
-            🎉 受賞者の皆さん、おめでとうございます！<br>
-            素晴らしい作品をありがとうございました。
-            後日連絡いたします。
+  <!-- 応募方法 -->
+  <section class="bg-white rounded-2xl shadow p-8 md:p-12 mb-2">
+    <h3 class="text-2xl font-bold text-blue-700 mb-4 border-b-2 border-blue-100 pb-2 tracking-wide">応募方法</h3>
+    <ol class="list-decimal list-inside space-y-4 text-gray-800 text-base ml-4">
+      <li>
+        <strong>作品データ準備</strong><br>
+        CADで設計し、STEPファイルを用意。<br>
+        <a href="3dcontest2025/steep.html"
+          class="inline-block mt-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-blue-200 transition text-sm font-semibold"
+          target="_blank">
+          STEPファイルの作り方はこちら
+        </a><br>
+        コンセプトシートにはテーマ・制作意図・使用パーツ・プログラム概要などを記載。<br>
+        以下に最低限のコンセプトシートのサンプルがあります。よろしければご覧ください。<br>
+        <a href="3dcontest2025/example.html"
+          class="inline-block mt-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition text-sm font-semibold"
+          target="_blank">
+          📋 コンセプトシート サンプル
+        </a>
+      </li>
+      <li>
+        <strong>応募フォーム</strong>で提出<br>
+        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mt-2 mb-3">
+          <p class="text-sm text-yellow-800">
+            ⚠️<strong>注意：</strong>g.maizuru-ct.ac.jpのアカウントでログインして応募してください。
           </p>
         </div>
-      </div>
-    </section>
+        <a href="https://forms.gle/uYh57ndEar9BdZsr7"
+          class="inline-block mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition text-sm font-semibold"
+          target="_blank" rel="noopener">
+          📝 応募フォームはこちら
+        </a>
+      </li>
+      <li>
+        <strong>審査結果発表</strong>：2025年10月中、ウェブサイトで通知
+      </li>
+    </ol>
+  </section>
 
-    <!-- 主催・後援 -->
-    <section class="bg-blue-50 rounded-2xl shadow p-8 md:p-12 mb-2">
-      <h3 class="text-2xl font-bold text-blue-700 mb-4 border-b-2 border-blue-100 pb-2 tracking-wide">主催・後援</h3>
-      <div class="space-y-3 text-gray-800">
-        <div>
-          <span class="font-semibold text-blue-700">主催：</span>
-          <span class="text-base">舞鶴高専 スタートアップ人材育成センター</span>
+  <!-- 審査結果 -->
+  <section
+    class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl shadow-lg p-8 md:p-12 mb-2 border-2 border-yellow-300">
+    <h3
+      class="text-2xl font-bold text-orange-700 mb-6 border-b-2 border-orange-200 pb-2 tracking-wide flex items-center">
+      🏆 審査結果発表
+    </h3>
+
+    <div class="space-y-6">
+      <!-- 最優秀賞 -->
+      <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-yellow-500">
+        <div class="flex items-center mb-3">
+          <span class="text-3xl mr-3">👑</span>
+          <h4 class="text-2xl font-bold text-yellow-600">最優秀賞</h4>
         </div>
-        <div>
-          <span class="font-semibold text-blue-700">後援：</span>
-          <span class="text-base">舞鶴高専 地域テクノアカデミア（予定）</span>
+        <div class="ml-12">
+          <p class="text-lg font-semibold text-gray-800 mb-1">山城さん</p>
+          <p class="text-gray-700">
+            <span
+              class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold mr-2">造形部門</span>
+            <span class="text-base">原神：ヨォーヨの神の目</span>
+          </p>
+          <p class="text-sm text-gray-600 mt-2">※造形部門 優秀賞兼任</p>
         </div>
       </div>
-    </section>
 
-    <!-- 戻るリンク -->
-    <div class="text-center mt-10">
-      <a href="../activities.html" class="inline-block bg-blue-600 text-white font-semibold py-2 px-8 rounded-lg hover:bg-blue-700 transition text-lg shadow">
-        ← 活動一覧に戻る
-      </a>
+      <!-- 優秀賞 -->
+      <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
+        <div class="flex items-center mb-3">
+          <span class="text-3xl mr-3">🥈</span>
+          <h4 class="text-2xl font-bold text-blue-600">優秀賞</h4>
+        </div>
+        <div class="ml-12 space-y-4">
+          <!-- 動くおもちゃ部門 -->
+          <div class="pb-4 border-b border-gray-200">
+            <p class="text-lg font-semibold text-gray-800 mb-1">斉藤さん</p>
+            <p class="text-gray-700">
+              <span
+                class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold mr-2">動くおもちゃ部門</span>
+              <span class="text-base">脱進機キーホルダー</span>
+            </p>
+          </div>
+          <!-- IoT部門 -->
+          <div>
+            <p class="text-lg font-semibold text-gray-800 mb-1">山城さん</p>
+            <p class="text-gray-700">
+              <span
+                class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold mr-2">IoT部門</span>
+              <span class="text-base">部室をスマートロックに</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 受賞者へのメッセージ -->
+      <div class="bg-blue-50 rounded-lg p-4 mt-6">
+        <p class="text-gray-700 text-center">
+          🎉 受賞者の皆さん、おめでとうございます！<br>
+          素晴らしい作品をありがとうございました。<br>
+          コンテストの表彰式を11月28日（金）17時30分から行います。
+        </p>
+      </div>
     </div>
+  </section>
 
-  </main>
+  <!-- 主催・後援 -->
+  <section class="bg-blue-50 rounded-2xl shadow p-8 md:p-12 mb-2">
+    <h3 class="text-2xl font-bold text-blue-700 mb-4 border-b-2 border-blue-100 pb-2 tracking-wide">主催・後援</h3>
+    <div class="space-y-3 text-gray-800">
+      <div>
+        <span class="font-semibold text-blue-700">主催：</span>
+        <span class="text-base">舞鶴高専 スタートアップ人材育成センター</span>
+      </div>
+      <div>
+        <span class="font-semibold text-blue-700">後援：</span>
+        <span class="text-base">舞鶴高専 地域テクノアカデミア（予定）</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 戻るリンク -->
+  <div class="text-center mt-10">
+    <a href="../activities.html"
+      class="inline-block bg-blue-600 text-white font-semibold py-2 px-8 rounded-lg hover:bg-blue-700 transition text-lg shadow">
+      ← 活動一覧に戻る
+    </a>
+  </div>
+
+</main>
 <footer class="bg-gray-800 text-white text-center py-4 mt-10">
   <p>&copy; 2025 舞鶴高専 ものつくりラボ</p>
 </footer>
 <script type="module" src="../js/mobile-menu.js"></script>
 </body>
+
 </html>
