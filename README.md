@@ -224,9 +224,6 @@ npm run build
 ### アクセス方法
 
 **URL:** `http://localhost:5173/admin/admin.html`  
-**パスワード:** `monotukuri`
-
-管理者ページには、このREADMEと同じ内容の管理ガイドがあります。
 
 ### イースターエッグ
 
