@@ -231,6 +231,13 @@ git commit -m "変更内容"
 git push origin main</pre>
                         </div>
 
+                        <h4 class="font-semibold text-gray-700 mt-4">自動リリース（バージョン管理）</h4>
+                        <p class="text-sm text-gray-600">タグを付けてプッシュすると、ビルド済み成果物がGitHubのReleasesに保存されます</p>
+                        <div class="code-block p-4 text-sm mt-2">
+                            <pre>git tag v1.0.0
+git push origin v1.0.0</pre>
+                        </div>
+
                         <h4 class="font-semibold text-gray-700 mt-4">手動ビルド</h4>
                         <div class="code-block p-4 text-sm mt-2">
                             <pre>npm install
