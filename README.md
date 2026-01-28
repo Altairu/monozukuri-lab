@@ -316,7 +316,7 @@ git reset --hard HEAD~1
 
 ## 🤝 コントリビューション
 
-バグ報告や機能提案は [Issues](https://github.com/Altairu/monozukuri-lab/issues) で受け付けています。
+バグ報告や機能提案は [Issues](https://github.com/monotukuri-lab/monotukuri-lab_HP/issues) で受け付けています。
 
 ---
 
