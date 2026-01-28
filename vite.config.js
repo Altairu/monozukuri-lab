@@ -18,17 +18,18 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        activities: resolve(__dirname, 'activities.html'),
-        facility: resolve(__dirname, 'facility.html'),
-        members: resolve(__dirname, 'members.html'),
-        contact: resolve(__dirname, 'contact.html'),
-        python: resolve(__dirname, 'python.html'),
-        game: resolve(__dirname, 'game.html'),
-        secret: resolve(__dirname, 'secret.html'),
-        secret2: resolve(__dirname, 'secret2.html'),
+        activities: resolve(__dirname, 'pages/activities.html'),
+        facility: resolve(__dirname, 'pages/facility.html'),
+        members: resolve(__dirname, 'pages/members.html'),
+        contact: resolve(__dirname, 'pages/contact.html'),
+        python: resolve(__dirname, 'pages/python.html'),
+        game: resolve(__dirname, 'pages/game.html'),
+        projects: resolve(__dirname, 'pages/projects.html'),
+        admin: resolve(__dirname, 'admin/admin.html'),
+        secret: resolve(__dirname, 'admin/secret.html'),
+        secret2: resolve(__dirname, 'admin/secret2.html'),
         '3dcontest2025': resolve(__dirname, 'events/3dcontest2025.html'),
         '3dprinter2025': resolve(__dirname, 'events/3dprinter2025.html'),
-        admin: resolve(__dirname, 'admin.html'),
       }
     }
   }

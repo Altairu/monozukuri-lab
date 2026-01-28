@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ゲーム | 舞鶴高専 ものつくりラボ</title>
+  <link rel="icon" type="image/png" href="../images/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* ゲーム固有のスタイル */
+    :root {
+      --game-bg: #0f1220;
+      --game-panel: #171a2b;
+      --game-text: #e8ebff;
+      --game-accent: #7aa2ff;
+      --game-danger: #ff6b6b;
+      --game-muted: #9aa3b2;
+    }
+
+    .game-card {
+      background: linear-gradient(180deg, #151a2d, var(--game-panel));
+      border: 1px solid #22273d;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .04);
+    }
+
+    .game-header {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border-bottom: 1px solid #22273d;
+      background: #13182b99;
+    }
+
+    .game-header h2 {
+      font-size: 16px;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: .02em;
+      color: var(--game-text);
+    }
+
+    .stats {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #0f1530;
+      border: 1px solid #2a335c;
+      color: var(--game-text);
+      font-size: 14px;
+    }
+
+    .stage-wrap {
+      position: relative;
+      aspect-ratio: 16/9;
+      width: 100%;
+      background: #0a0f24;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .game-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px 16px;
+      border-top: 1px solid #22273d;
+      background: #101427;
+    }
+
+    .game-btn {
+      appearance: none;
+      border: 1px solid #2a335c;
+      background: #121833;
+      color: var(--game-text);
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: .02em;
+      transition: transform .06s ease, background .2s ease, border-color .2s ease;
+      user-select: none;
+    }
+
+    .game-btn:hover {
+      background: #17214a;
+    }
+
+    .game-btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-accent {
+      border-color: #3253ff;
+      background: #1a2466;
+    }
+
+    .btn-danger {
+      border-color: #ff6b6b55;
+      background: #3a121f;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(12, 16, 34, .55);
+      backdrop-filter: blur(2px);
+    }
+
+    .panel {
+      background: #0f1430;
+      border: 1px solid #243062;
+      padding: 20px;
+      border-radius: 14px;
+      text-align: center;
+      max-width: 520px;
+      color: var(--game-text);
+    }
+
+    .panel h3 {
+      margin: 0 0 8px;
+    }
+
+    .panel p {
+      margin: 0 0 14px;
+      color: var(--game-muted);
+    }
+
+    /* モバイル用簡易D-Pad */
+    .dpad {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, 52px);
+      grid-template-rows: repeat(3, 52px);
+      gap: 6px;
+      opacity: .7;
+    }
+
+    .dpad button {
+      border-radius: 12px;
+      background: #0e1433;
+      border: 1px solid #2c3770;
+      color: var(--game-text);
+      cursor: pointer;
+    }
+
+    .dpad button:active {
+      background: #122066;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (hover:none) and (pointer:coarse) {
+      .dpad {
+        opacity: .9;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <h1 class="site-title">舞鶴高専 ものつくりラボ</h1>
+      <!-- ハンバーガーメニューボタン (モバイル) -->
+      <button id="menu-toggle" class="hamburger-btn" aria-label="メニュー">
+        <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+        <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+        <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+      </button>
+      <!-- デスクトップナビゲーション -->
+      <nav class="nav-desktop">
+        <a href="../index.html" class="hover:text-blue-500">ホーム</a>
+        <a href="activities.html" class="hover:text-blue-500">活動</a>
+        <a href="facility.html" class="hover:text-blue-500">施設</a>
+        <a href="members.html" class="hover:text-blue-500">スタッフ</a>
+        <a href="contact.html" class="hover:text-blue-500">お問い合わせ</a>
+        <a href="game.html" class="hover:text-blue-500">ゲーム</a>
+      </nav>
+    </div>
+    <!-- モバイルメニュー -->
+    <nav id="mobile-menu" class="nav-mobile">
+      <div class="nav-mobile-inner">
+        <a href="../index.html" class="block py-2 hover:text-blue-500">ホーム</a>
+        <a href="activities.html" class="block py-2 hover:text-blue-500">活動</a>
+        <a href="facility.html" class="block py-2 hover:text-blue-500">施設</a>
+        <a href="members.html" class="block py-2 hover:text-blue-500">スタッフ</a>
+        <a href="contact.html" class="block py-2 hover:text-blue-500">お問い合わせ</a>
+        <a href="game.html" class="block py-2 hover:text-blue-500">ゲーム</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-24 px-4 pb-16">
+    <div class="max-w-5xl mx-auto">
+      <h1 class="text-3xl font-bold mb-6 text-center">ミニゲーム - Dodger</h1>
+
+      <div id="app" class="game-card rounded-2xl overflow-hidden shadow-lg">
+        <div class="game-header">
+          <h2>Dodger — Vue3 × Canvas</h2>
+          <div class="stats">
+            <span class="chip">Score: {{ score }}</span>
+            <span class="chip">Best: {{ highScore }}</span>
+            <span class="chip">Speed: x{{ speed.toFixed(2) }}</span>
+          </div>
+        </div>
+
+        <div class="stage-wrap">
+          <canvas ref="canvas" @pointerdown="onPointerStart" @pointermove="onPointerMove" @pointerup="onPointerEnd"
+            @pointercancel="onPointerEnd"></canvas>
+
+          <!-- 開始オーバーレイ -->
+          <div v-if="!started && !gameOver" class="overlay">
+            <div class="panel">
+              <h3 class="text-xl font-bold">矢印キー / WASDで移動</h3>
+              <p>落ちてくる障害物を避けよう。時間が経つほど難しくなります。</p>
+              <button class="game-btn btn-accent" @click="start()">▶ はじめる</button>
+            </div>
+          </div>
+
+          <!-- ゲームオーバーオーバーレイ -->
+          <div v-if="gameOver" class="overlay">
+            <div class="panel">
+              <h3 class="text-xl font-bold">Game Over 😵</h3>
+              <p>Score: {{ score }} ／ Best: {{ highScore }}</p>
+              <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+                <button class="game-btn btn-accent" @click="restart()">↻ もう一度</button>
+                <button class="game-btn" @click="share()">Share</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- モバイルD-Pad -->
+          <div class="dpad" :class="{ hidden: hideDpad }">
+            <span></span>
+            <button @pointerdown.prevent="press('up', true)" @pointerup="press('up', false)">▲</button>
+            <span></span>
+            <button @pointerdown.prevent="press('left', true)" @pointerup="press('left', false)">◀</button>
+            <span></span>
+            <button @pointerdown.prevent="press('right', true)" @pointerup="press('right', false)">▶</button>
+            <span></span>
+            <button @pointerdown.prevent="press('down', true)" @pointerup="press('down', false)">▼</button>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="game-controls">
+          <button class="game-btn" @click="togglePause" :class="{ 'btn-accent': paused }">{{ paused ? '▶ 再開' : '⏸ 一時停止'
+            }}</button>
+          <button class="game-btn btn-danger" @click="restart">↻ リスタート</button>
+          <button class="game-btn" @click="hideDpad = !hideDpad">D-Pad {{ hideDpad ? '表示' : '非表示' }}</button>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-white rounded-xl shadow p-6 max-w-5xl mx-auto">
+        <h2 class="text-xl font-bold mb-4 text-blue-700">遊び方</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+          <li><strong>操作方法：</strong>矢印キー または WASDキー で移動</li>
+          <li><strong>ルール：</strong>上から落ちてくる赤い障害物を避け続けよう</li>
+          <li><strong>難易度：</strong>時間が経つほどスピードが速くなります</li>
+          <li><strong>スマホ：</strong>画面左下のD-Padまたはスワイプで操作できます</li>
+          <li><strong>一時停止：</strong>スペースキーまたはボタンで一時停止</li>
+        </ul>
+      </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 舞鶴高専 ものつくりラボ</p>
+  </footer>
+  <script type="module" src="../js/mobile-menu.js"></script>
+
+  <!-- Vue 3 CDN（グローバルビルド） -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script>
+    const { createApp, ref, reactive, onMounted, onUnmounted } = Vue;
+
+    createApp({
+      setup() {
+        const canvas = ref(null);
+        const ctxRef = ref(null);
+        const started = ref(false);
+        const paused = ref(false);
+        const gameOver = ref(false);
+        const score = ref(0);
+        const highScore = ref(Number(localStorage.getItem('dodger:best') || 0));
+        const speed = ref(1);
+        const hideDpad = ref(false);
+
+        const W = ref(0), H = ref(0);
+
+        // プレイヤー & 障害物
+        const player = reactive({ x: 0, y: 0, w: 26, h: 26, speed: 280 });
+        const keys = reactive({ up: false, down: false, left: false, right: false });
+        const pointer = reactive({ active: false, id: null, startX: 0, startY: 0, x: 0, y: 0 });
+        const obstacles = reactive([]); // {x,y,w,h,vy}
+
+        // 時間管理
+        let last = 0; // 最後のフレームのtimestamp
+        let rafId = null;
+        let spawnTimer = 0;
+
+        function resize() {
+          const el = canvas.value;
+          const rect = el.parentElement.getBoundingClientRect();
+          // 実ピクセルに合わせる（高解像度対応）
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          const targetW = Math.floor(rect.width);
+          const targetH = Math.floor(rect.height);
+          W.value = targetW; H.value = targetH;
+          el.width = Math.floor(targetW * dpr);
+          el.height = Math.floor(targetH * dpr);
+          el.getContext('2d').setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        function reset() {
+          score.value = 0; speed.value = 1; gameOver.value = false; paused.value = false; started.value = false;
+          obstacles.splice(0, obstacles.length);
+          spawnTimer = 0; last = 0;
+          // プレイヤー初期位置
+          player.x = W.value * 0.5 - player.w * 0.5;
+          player.y = H.value - player.h - 18;
+        }
+
+        function start() {
+          started.value = true; paused.value = false; gameOver.value = false;
+          if (!rafId) { last = performance.now(); rafId = requestAnimationFrame(loop); }
+        }
+
+        function restart() {
+          reset();
+          started.value = true; // すぐ再開
+          if (!rafId) { last = performance.now(); rafId = requestAnimationFrame(loop); }
+        }
+
+        function togglePause() {
+          if (!started.value || gameOver.value) return;
+          paused.value = !paused.value;
+          if (!paused.value && !rafId) { last = performance.now(); rafId = requestAnimationFrame(loop); }
+        }
+
+        function share() {
+          const text = `Dodgerで ${score.value} 点！君は超えられる？`;
+          const url = location.href;
+          if (navigator.share) navigator.share({ title: 'Dodger', text, url });
+          else alert(text + "\n" + url);
+        }
+
+        // 入力処理
+        function onKey(e, down) {
+          const k = e.key.toLowerCase();
+          if (['arrowup', 'w'].includes(k)) keys.up = down;
+          if (['arrowdown', 's'].includes(k)) keys.down = down;
+          if (['arrowleft', 'a'].includes(k)) keys.left = down;
+          if (['arrowright', 'd'].includes(k)) keys.right = down;
+          if (k === ' ' && down) togglePause();
+        }
+
+        function press(dir, down) {
+          keys[dir] = down;
+        }
+
+        function onPointerStart(e) {
+          pointer.active = true; pointer.id = e.pointerId; pointer.startX = e.clientX; pointer.startY = e.clientY; pointer.x = e.clientX; pointer.y = e.clientY;
+        }
+        function onPointerMove(e) {
+          if (!pointer.active || pointer.id !== e.pointerId) return;
+          const dx = e.clientX - pointer.startX;
+          const dy = e.clientY - pointer.startY;
+          keys.left = dx < -8; keys.right = dx > 8; keys.up = dy < -8; keys.down = dy > 8;
+          pointer.x = e.clientX; pointer.y = e.clientY;
+        }
+        function onPointerEnd() {
+          pointer.active = false; pointer.id = null; keys.up = keys.down = keys.left = keys.right = false;
+        }
+
+        // ゲームループ
+        function loop(ts) {
+          rafId = null;
+          const dt = Math.min(0.033, (ts - last) / 1000 || 0);
+          last = ts;
+          if (!paused.value && started.value && !gameOver.value) {
+            update(dt);
+            draw();
+          }
+          if (!paused.value && started.value && !gameOver.value) rafId = requestAnimationFrame(loop);
+        }
+
+        function update(dt) {
+          // 難易度スケール（時間で上昇/上限2.5）
+          speed.value = Math.min(2.5, speed.value + dt * 0.05);
+          score.value += Math.floor(dt * 60);
+
+          // プレイヤー移動
+          let vx = 0, vy = 0;
+          if (keys.left) vx -= 1; if (keys.right) vx += 1; if (keys.up) vy -= 1; if (keys.down) vy += 1;
+          if (vx && vy) { vx *= Math.SQRT1_2; vy *= Math.SQRT1_2; }
+          player.x += vx * player.speed * dt;
+          player.y += vy * player.speed * dt;
+          player.x = Math.max(0, Math.min(W.value - player.w, player.x));
+          player.y = Math.max(0, Math.min(H.value - player.h, player.y));
+
+          // 障害物生成
+          spawnTimer -= dt;
+          if (spawnTimer <= 0) {
+            spawnTimer = Math.max(0.25, 0.9 - speed.value * 0.22);
+            const count = 1 + (Math.random() < Math.min(0.6, (speed.value - 1) * 0.5) ? 1 : 0);
+            for (let i = 0; i < count; i++) {
+              const w = 20 + Math.random() * 40;
+              const h = 10 + Math.random() * 28;
+              obstacles.push({ x: Math.random() * (W.value - w), y: -h, w, h, vy: (120 + Math.random() * 140) * speed.value });
+            }
+          }
+
+          // 障害物更新 & 衝突
+          for (let i = obstacles.length - 1; i >= 0; i--) {
+            const o = obstacles[i];
+            o.y += o.vy * dt;
+            if (rectsOverlap(player, o)) {
+              gameOver.value = true;
+              highScore.value = Math.max(highScore.value, score.value);
+              localStorage.setItem('dodger:best', String(highScore.value));
+              break;
+            }
+            if (o.y > H.value + 50) obstacles.splice(i, 1);
+          }
+        }
+
+        function rectsOverlap(a, b) {
+          return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
+        }
+
+        function draw() {
+          const ctx = ctxRef.value; if (!ctx) return;
+          ctx.clearRect(0, 0, W.value, H.value);
+          // 背景グリッド
+          ctx.globalAlpha = 0.6; ctx.fillStyle = '#0b0f27'; ctx.fillRect(0, 0, W.value, H.value); ctx.globalAlpha = 1;
+          drawGrid(ctx);
+          // プレイヤー
+          ctx.fillStyle = '#7aa2ff';
+          roundRect(ctx, player.x, player.y, player.w, player.h, 5, true);
+          // 障害物
+          ctx.fillStyle = '#ff6b6b';
+          for (const o of obstacles) roundRect(ctx, o.x, o.y, o.w, o.h, 4, true);
+        }
+
+        function drawGrid(ctx) {
+          ctx.save();
+          ctx.strokeStyle = '#1b2346'; ctx.lineWidth = 1;
+          const step = 32;
+          for (let x = 0; x < W.value; x += step) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H.value); ctx.stroke(); }
+          for (let y = 0; y < H.value; y += step) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W.value, y); ctx.stroke(); }
+          ctx.restore();
+        }
+
+        function roundRect(ctx, x, y, w, h, r, fill = true) {
+          ctx.beginPath();
+          ctx.moveTo(x + r, y);
+          ctx.arcTo(x + w, y, x + w, y + h, r);
+          ctx.arcTo(x + w, y + h, x, y + h, r);
+          ctx.arcTo(x, y + h, x, y, r);
+          ctx.arcTo(x, y, x + w, y, r);
+          if (fill) ctx.fill(); else ctx.stroke();
+        }
+
+        onMounted(() => {
+          resize();
+          const el = canvas.value;
+          ctxRef.value = el.getContext('2d');
+          reset();
+          window.addEventListener('resize', resize);
+          window.addEventListener('keydown', e => onKey(e, true));
+          window.addEventListener('keyup', e => onKey(e, false));
+        });
+
+        onUnmounted(() => {
+          cancelAnimationFrame(rafId);
+          window.removeEventListener('resize', resize);
+        });
+
+        return {
+          canvas, started, paused, gameOver, score, highScore, speed, hideDpad,
+          start, restart, togglePause, share, onPointerStart, onPointerMove, onPointerEnd, press
+        };
+      }
+    }).mount('#app');
+  </script>
+</body>
+
+</html>

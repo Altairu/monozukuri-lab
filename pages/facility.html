@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>施設紹介 | 舞鶴高専 ものつくりラボ</title>
+  <link rel="icon" type="image/png" href="../images/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <h1 class="site-title">舞鶴高専 ものつくりラボ</h1>
+      <!-- ハンバーガーメニューボタン (モバイル) -->
+      <button id="menu-toggle" class="hamburger-btn" aria-label="メニュー">
+        <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+        <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+        <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+      </button>
+      <!-- デスクトップナビゲーション -->
+      <nav class="nav-desktop">
+        <a href="../index.html" class="hover:text-blue-500">ホーム</a>
+        <a href="activities.html" class="hover:text-blue-500">活動</a>
+        <a href="facility.html" class="hover:text-blue-500">施設</a>
+        <a href="members.html" class="hover:text-blue-500">スタッフ</a>
+        <a href="contact.html" class="hover:text-blue-500">お問い合わせ</a>
+        <a href="game.html" class="hover:text-blue-500">ゲーム</a>
+      </nav>
+    </div>
+    <!-- モバイルメニュー -->
+    <nav id="mobile-menu" class="nav-mobile">
+      <div class="nav-mobile-inner">
+        <a href="../index.html" class="block py-2 hover:text-blue-500">ホーム</a>
+        <a href="activities.html" class="block py-2 hover:text-blue-500">活動</a>
+        <a href="facility.html" class="block py-2 hover:text-blue-500">施設</a>
+        <a href="members.html" class="block py-2 hover:text-blue-500">スタッフ</a>
+        <a href="contact.html" class="block py-2 hover:text-blue-500">お問い合わせ</a>
+        <a href="game.html" class="block py-2 hover:text-blue-500">ゲーム</a>
+      </div>
+    </nav>
+  </header>
+  <main class="site-main">
+    <h2 class="section-title">施設紹介</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+      <div class="bg-white rounded-xl shadow p-4 flex flex-col items-center">
+        <img src="../images/cnc1.png" alt="CNC加工機1" class="w-full max-w-xs rounded mb-2">
+        <h3 class="font-bold text-lg mb-1">PRS Alpha</h3>
+        <p class="text-gray-700 text-sm">木材、プラスチック、アルミニウム、その他の素材のデジタル加工に最適なマシン</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-4 flex flex-col items-center">
+        <img src="../images/laser.png" alt="レーザー加工機" class="w-full max-w-xs rounded mb-2">
+        <h3 class="font-bold text-lg mb-1">Epilog Fusion Edge</h3>
+        <p class="text-gray-700 text-sm">高性能レーザー加工機。滑らかで美しい切断面と高速高精度の彫刻が可能。</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-4 flex flex-col items-center">
+        <img src="../images/3dprint1.png" alt="3Dプリンタ" class="w-full max-w-xs rounded mb-2">
+        <h3 class="font-bold text-lg mb-1">CreatBot 3D D1000</h3>
+        <p class="text-gray-700 text-sm">1m角の造形エリアを備えた大型3Dプリンタです。</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-4 flex flex-col items-center">
+        <img src="../images/drilling_machine.png" alt="ボール盤" class="w-full max-w-xs rounded mb-2">
+        <h3 class="font-bold text-lg mb-1">精密卓上ボール盤</h3>
+        <p class="text-gray-700 text-sm">ESD350S精密卓上ボール盤。正確な穴あけ加工ができる工作機械です。</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-4 flex flex-col items-center">
+        <img src="../images/3dprint2.png" alt="3Dプリンタ2" class="w-full max-w-xs rounded mb-2">
+        <h3 class="font-bold text-lg mb-1">Adventurer 4</h3>
+        <p class="text-gray-700 text-sm">複数台の3Dプリンタで同時に造形可能。イベントや授業でも活躍中です。</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-4 flex flex-col items-center">
+        <img src="../images/3dprint3.png" alt="3Dプリンタ3" class="w-full max-w-xs rounded mb-2">
+        <h3 class="font-bold text-lg mb-1">Raise3D Pro3</h3>
+        <p class="text-gray-700 text-sm">大きな造形サイズ、多種多様なフィラメントへの対応、デュアルヘットの搭載。</p>
+      </div>
+    </div>
+
+    <section class="mt-12 max-w-3xl mx-auto">
+      <h3 class="text-xl font-bold mb-2 text-blue-700">その他の設備</h3>
+      <ul class="list-disc list-inside text-gray-800 space-y-1">
+        <li><span class="font-bold">切断機：</span>金属や樹脂など様々な素材の切断に対応した機械を備えています。</li>
+        <li><span class="font-bold">スライドマルノコ：</span>木材の精密な切断や角度切りに活用できる電動工具です。</li>
+        <li><span class="font-bold">3Dスキャナ：</span>立体物をデジタルデータ化し、3Dプリンタ等での再現や設計に利用できます。</li>
+        <li><span class="font-bold">電動工具：</span>インパクトドライバー、グラインダー、ジグソーなど多様な電動工具を揃えています。</li>
+      </ul>
+      <p class="mt-4 text-gray-600 text-sm">上記以外にも、ものづくりに役立つ様々な設備・工具を用意しています。</p>
+    </section>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; 2025 舞鶴高専 ものつくりラボ</p>
+  </footer>
+  <script type="module" src="../js/mobile-menu.js"></script>
+</body>
+
+</html>

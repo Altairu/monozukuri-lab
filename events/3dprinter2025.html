@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,67 +9,70 @@
   <link rel="stylesheet" href="../css/style.css" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-100 text-gray-800">
-<header class="bg-white shadow-md fixed top-0 w-full z-50">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-    <h1 class="text-lg sm:text-xl font-bold whitespace-nowrap overflow-hidden text-ellipsis">舞鶴高専 ものつくりラボ</h1>
-    <!-- ハンバーガーメニューボタン (モバイル) -->
-    <button id="menu-toggle" class="md:hidden flex flex-col gap-1 p-2" aria-label="メニュー">
-      <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
-      <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
-      <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
-    </button>
-    <!-- デスクトップナビゲーション -->
-    <nav class="hidden md:flex space-x-4">
-      <a href="../index.html" class="hover:text-blue-500">ホーム</a>
-      <a href="../activities.html" class="hover:text-blue-500">活動</a>
-      <a href="../facility.html" class="hover:text-blue-500">施設</a>
-      <a href="../members.html" class="hover:text-blue-500">スタッフ</a>
-      <a href="../contact.html" class="hover:text-blue-500">お問い合わせ</a>
-      <a href="../game.html" class="hover:text-blue-500">ゲーム</a>
-    </nav>
-  </div>
-  <!-- モバイルメニュー -->
-  <nav id="mobile-menu" class="hidden bg-white border-t border-gray-200">
-    <div class="px-4 py-2 space-y-2">
-      <a href="../index.html" class="block py-2 hover:text-blue-500">ホーム</a>
-      <a href="../activities.html" class="block py-2 hover:text-blue-500">活動</a>
-      <a href="../facility.html" class="block py-2 hover:text-blue-500">施設</a>
-      <a href="../members.html" class="block py-2 hover:text-blue-500">スタッフ</a>
-      <a href="../contact.html" class="block py-2 hover:text-blue-500">お問い合わせ</a>
-      <a href="../game.html" class="block py-2 hover:text-blue-500">ゲーム</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <h1 class="site-title">舞鶴高専 ものつくりラボ</h1>
+      <!-- ハンバーガーメニューボタン (モバイル) -->
+      <button id="menu-toggle" class="hamburger-btn" aria-label="メニュー">
+        <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+        <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+        <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+      </button>
+      <!-- デスクトップナビゲーション -->
+      <nav class="nav-desktop">
+        <a href="../index.html" class="hover:text-blue-500">ホーム</a>
+        <a href="../pages/activities.html" class="hover:text-blue-500">活動</a>
+        <a href="../pages/facility.html" class="hover:text-blue-500">施設</a>
+        <a href="../pages/members.html" class="hover:text-blue-500">スタッフ</a>
+        <a href="../pages/contact.html" class="hover:text-blue-500">お問い合わせ</a>
+        <a href="../pages/game.html" class="hover:text-blue-500">ゲーム</a>
+      </nav>
     </div>
-  </nav>
-</header>
-<main class="pt-24 px-4 max-w-2xl mx-auto">
-  <h2 class="text-2xl font-bold mb-4 text-blue-700">3Dプリンタ講習会</h2>
-  <div class="flex justify-center mb-6">
-    <img src="images/3dprinter2025.jpg" alt="3Dプリンタ講習会ポスター"
-      class="rounded-xl shadow border border-gray-300 w-full max-w-2xl h-auto object-contain"
-      style="aspect-ratio: 4/3; background:#fff;" />
-  </div>
-  <div class="bg-white rounded-xl shadow p-6 mb-8">
-    <ul class="mb-2 list-disc list-inside text-gray-800">
-      <li><span class="font-bold">日時：</span>令和7年6月16～20日（月～金）16時15分~</li>
-      <li><span class="font-bold">場所：</span>ものつくりラボ</li>
-      <li><span class="font-bold">対象：</span>3Dプリンタを使ってみたい人</li>
-      <li><span class="font-bold">定員：</span>各日先着３名はプリントまで可能</li>
-      <li>使い方講習のみ、見学は制限なし</li>
-    </ul>
-    <p class="mt-4">3Dプリンタの基本的な使い方や注意点、実際の造形体験までサポートします。初心者歓迎！</p>
-  </div>
+    <!-- モバイルメニュー -->
+    <nav id="mobile-menu" class="nav-mobile">
+      <div class="nav-mobile-inner">
+        <a href="../index.html" class="block py-2 hover:text-blue-500">ホーム</a>
+        <a href="../pages/activities.html" class="block py-2 hover:text-blue-500">活動</a>
+        <a href="../pages/facility.html" class="block py-2 hover:text-blue-500">施設</a>
+        <a href="../pages/members.html" class="block py-2 hover:text-blue-500">スタッフ</a>
+        <a href="../pages/contact.html" class="block py-2 hover:text-blue-500">お問い合わせ</a>
+        <a href="../pages/game.html" class="block py-2 hover:text-blue-500">ゲーム</a>
+      </div>
+    </nav>
+  </header>
+  <main class="pt-24 px-4 max-w-2xl mx-auto">
+    <h2 class="text-2xl font-bold mb-4 text-blue-700">3Dプリンタ講習会</h2>
+    <div class="flex justify-center mb-6">
+      <img src="images/3dprinter2025.jpg" alt="3Dプリンタ講習会ポスター"
+        class="rounded-xl shadow border border-gray-300 w-full max-w-2xl h-auto object-contain"
+        style="aspect-ratio: 4/3; background:#fff;" />
+    </div>
+    <div class="bg-white rounded-xl shadow p-6 mb-8">
+      <ul class="mb-2 list-disc list-inside text-gray-800">
+        <li><span class="font-bold">日時：</span>令和7年6月16～20日（月～金）16時15分~</li>
+        <li><span class="font-bold">場所：</span>ものつくりラボ</li>
+        <li><span class="font-bold">対象：</span>3Dプリンタを使ってみたい人</li>
+        <li><span class="font-bold">定員：</span>各日先着３名はプリントまで可能</li>
+        <li>使い方講習のみ、見学は制限なし</li>
+      </ul>
+      <p class="mt-4">3Dプリンタの基本的な使い方や注意点、実際の造形体験までサポートします。初心者歓迎！</p>
+    </div>
 
     <!-- 戻るリンク -->
     <div class="text-center mt-10">
-      <a href="../activities.html" class="inline-block bg-blue-600 text-white font-semibold py-2 px-8 rounded-lg hover:bg-blue-700 transition text-lg shadow">
+      <a href="../pages/activities.html"
+        class="inline-block bg-blue-600 text-white font-semibold py-2 px-8 rounded-lg hover:bg-blue-700 transition text-lg shadow">
         ← 活動一覧に戻る
       </a>
     </div>
-    </main>
-</main>
-<footer class="bg-gray-800 text-white text-center py-4 mt-10">
-  <p>&copy; 2025 舞鶴高専 ものつくりラボ</p>
-</footer>
-<script type="module" src="../js/mobile-menu.js"></script>
+  </main>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; 2025 舞鶴高専 ものつくりラボ</p>
+  </footer>
+  <script type="module" src="../js/mobile-menu.js"></script>
 </body>
+
 </html>

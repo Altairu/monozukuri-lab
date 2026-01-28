@@ -70,20 +70,27 @@ monozukuri-lab/
 ├── .github/
 │   └── workflows/
 │       └── build-and-release.yml  # GitHub Actions設定
-├── css/
-│   └── style.css                  # グローバルCSS
+├── pages/                         # 公開ページ
+│   ├── activities.html            # 活動ページ
+│   ├── facility.html              # 施設ページ
+│   ├── members.html               # スタッフページ
+│   ├── contact.html               # お問い合わせページ
+│   ├── game.html                  # ゲームページ
+│   ├── python.html                # Python実行環境ページ
+│   └── projects.html              # プロジェクトページ
+├── admin/                         # 管理者ページ（非公開）
+│   ├── admin.html                 # 管理者ガイド
+│   ├── secret.html                # シークレットページ
+│   └── secret2.html               # シークレットページ2
 ├── events/                        # イベントページ
 │   ├── 3dcontest2025.html
 │   └── 3dprinter2025.html
+├── css/
+│   └── style.css                  # グローバルCSS
 ├── images/                        # 画像ファイル
 ├── js/
-│   └── script.js                  # 共通JavaScript
+│   └── mobile-menu.js             # モバイルメニュー
 ├── index.html                     # トップページ
-├── activities.html                # 活動ページ
-├── facility.html                  # 施設ページ
-├── members.html                   # スタッフページ
-├── contact.html                   # お問い合わせページ
-├── python.html                    # Python実行環境ページ
 ├── package.json                   # npm設定
 ├── vite.config.js                 # Vite設定
 └── README.md                      # このファイル

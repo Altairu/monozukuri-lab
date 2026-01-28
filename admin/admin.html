@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
     <title>管理者ページ | 舞鶴高専 ものつくりラボ</title>
-    <link rel="icon" type="image/png" href="images/logo.png" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="../images/logo.png" />
+    <link rel="stylesheet" href="../css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* ロック画面のスタイル */
+        /* ログイン画面 */
         .login-screen {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%);
             min-height: 100vh;
@@ -21,7 +21,7 @@
             backdrop-filter: blur(10px);
         }
 
-        /* 管理ガイドのスタイル */
+        /* ガイドセクション */
         .guide-section {
             transition: all 0.3s ease;
         }
@@ -75,50 +75,50 @@
             </form>
 
             <div class="mt-6 text-center">
-                <a href="index.html" class="text-blue-500 hover:underline text-sm">← トップページに戻る</a>
+                <a href="../index.html" class="text-blue-500 hover:underline text-sm">← トップページに戻る</a>
             </div>
         </div>
     </div>
 
-    <!-- 管理者ガイド画面（認証後に表示） -->
+    <!-- 管理者コンテンツ（認証後に表示） -->
     <div id="admin-content" class="hidden">
-        <header class="bg-white shadow-md fixed top-0 w-full z-50">
-            <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-                <h1 class="text-lg sm:text-xl font-bold whitespace-nowrap overflow-hidden text-ellipsis">
+        <header class="site-header">
+            <div class="site-header-inner">
+                <h1 class="site-title">
                     <span class="text-blue-600">🔧 管理者ページ</span>
                 </h1>
-                <!-- ハンバーガーメニューボタン (モバイル) -->
-                <button id="menu-toggle" class="md:hidden flex flex-col gap-1 p-2" aria-label="メニュー">
-                    <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
-                    <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
-                    <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+                <!-- ハンバーガーメニュー -->
+                <button id="menu-toggle" class="hamburger-btn" aria-label="メニュー">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
                 </button>
-                <!-- デスクトップナビゲーション -->
-                <nav class="hidden md:flex space-x-4 items-center">
-                    <a href="index.html" class="hover:text-blue-500">ホーム</a>
-                    <a href="activities.html" class="hover:text-blue-500">活動</a>
-                    <a href="facility.html" class="hover:text-blue-500">施設</a>
-                    <a href="members.html" class="hover:text-blue-500">スタッフ</a>
-                    <a href="contact.html" class="hover:text-blue-500">お問い合わせ</a>
+                <!-- デスクトップナビ -->
+                <nav class="nav-desktop">
+                    <a href="../index.html" class="nav-link">ホーム</a>
+                    <a href="../pages/activities.html" class="nav-link">活動</a>
+                    <a href="../pages/facility.html" class="nav-link">施設</a>
+                    <a href="../pages/members.html" class="nav-link">スタッフ</a>
+                    <a href="../pages/contact.html" class="nav-link">お問い合わせ</a>
                     <button id="logout-btn"
                         class="bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600 text-sm">ログアウト</button>
                 </nav>
             </div>
             <!-- モバイルメニュー -->
-            <nav id="mobile-menu" class="hidden bg-white border-t border-gray-200">
-                <div class="px-4 py-2 space-y-2">
-                    <a href="index.html" class="block py-2 hover:text-blue-500">ホーム</a>
-                    <a href="activities.html" class="block py-2 hover:text-blue-500">活動</a>
-                    <a href="facility.html" class="block py-2 hover:text-blue-500">施設</a>
-                    <a href="members.html" class="block py-2 hover:text-blue-500">スタッフ</a>
-                    <a href="contact.html" class="block py-2 hover:text-blue-500">お問い合わせ</a>
+            <nav id="mobile-menu" class="nav-mobile">
+                <div class="nav-mobile-inner">
+                    <a href="../index.html" class="nav-link-mobile">ホーム</a>
+                    <a href="../pages/activities.html" class="nav-link-mobile">活動</a>
+                    <a href="../pages/facility.html" class="nav-link-mobile">施設</a>
+                    <a href="../pages/members.html" class="nav-link-mobile">スタッフ</a>
+                    <a href="../pages/contact.html" class="nav-link-mobile">お問い合わせ</a>
                     <button id="logout-btn-mobile"
                         class="w-full bg-gray-500 text-white px-3 py-2 rounded hover:bg-gray-600 text-sm mt-2">ログアウト</button>
                 </div>
             </nav>
         </header>
 
-        <main class="pt-24 px-4 pb-12">
+        <main class="site-main pb-12">
             <div class="max-w-4xl mx-auto">
 
                 <!-- ヘッダー -->
@@ -135,48 +135,38 @@
                     </a>
                 </div>
 
-                <!-- 目次 -->
-                <div class="bg-blue-50 rounded-xl p-6 mb-8">
-                    <h3 class="font-bold text-lg mb-4 text-blue-800">📋 目次</h3>
-                    <ul class="space-y-2 text-blue-700">
-                        <li><a href="#structure" class="hover:underline">1. サイト構造</a></li>
-                        <li><a href="#edit" class="hover:underline">2. コンテンツ編集方法</a></li>
-                        <li><a href="#banner" class="hover:underline">3. イベントバナーの設置</a></li>
-                        <li><a href="#deploy" class="hover:underline">4. デプロイ方法</a></li>
-                        <li><a href="#trouble" class="hover:underline">5. トラブルシューティング</a></li>
-                    </ul>
-                </div>
-
                 <!-- 1. サイト構造 -->
-                <section id="structure" class="guide-section bg-white rounded-xl shadow p-6 mb-6">
-                    <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+                <section class="guide-section card mb-6">
+                    <h3 class="section-subtitle flex items-center">
                         <span
                             class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">1</span>
                         サイト構造
                     </h3>
                     <div class="space-y-4">
-                        <p class="text-gray-600">主要なファイル構成：</p>
+                        <p class="text-gray-600">主要なフォルダ構成：</p>
                         <div class="code-block p-4 text-sm">
                             <pre>monozukuri-lab/
-├── index.html         # トップページ
-├── activities.html    # 活動ページ
-├── facility.html      # 施設ページ
-├── members.html       # スタッフページ
-├── contact.html       # お問い合わせ
-├── events/            # イベントページ
-│   ├── 3dcontest2025.html
-│   └── 3dprinter2025.html
-├── images/            # 画像ファイル
-├── css/style.css      # スタイルシート
-├── js/                # JavaScriptファイル
-└── vite.config.js     # ビルド設定</pre>
+├── index.html           # トップページ
+├── pages/               # 公開ページ
+│   ├── activities.html
+│   ├── facility.html
+│   ├── members.html
+│   ├── contact.html
+│   ├── game.html
+│   └── python.html
+├── admin/               # 管理ページ
+├── events/              # イベントページ
+├── images/              # 画像ファイル
+├── css/style.css        # 共通スタイル
+├── js/                  # JavaScript
+└── vite.config.js       # ビルド設定</pre>
                         </div>
                     </div>
                 </section>
 
-                <!-- 2. コンテンツ編集 -->
-                <section id="edit" class="guide-section bg-white rounded-xl shadow p-6 mb-6">
-                    <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+                <!-- 2. 編集方法 -->
+                <section class="guide-section card mb-6">
+                    <h3 class="section-subtitle flex items-center">
                         <span
                             class="bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">2</span>
                         コンテンツ編集方法
@@ -193,121 +183,59 @@
                         </div>
 
                         <h4 class="font-semibold text-gray-700 mt-4">新しいページを追加する場合</h4>
-                        <ol class="list-decimal list-inside text-gray-600 space-y-2">
-                            <li>HTMLファイルを作成（既存ページをコピー推奨）</li>
-                            <li><code class="bg-gray-200 px-2 py-1 rounded">vite.config.js</code> にページを追加</li>
-                        </ol>
                         <div class="code-block p-4 text-sm mt-2">
                             <pre>// vite.config.js に追加
 rollupOptions: {
   input: {
     // ...既存のページ
-    newpage: resolve(__dirname, 'newpage.html'),  // 追加
+    newpage: resolve(__dirname, 'pages/newpage.html'),
   }
 }</pre>
-                        </div>
-
-                        <h4 class="font-semibold text-gray-700 mt-4">画像を追加する場合</h4>
-                        <p class="text-gray-600">images/フォルダに画像を配置し、HTMLで参照します：</p>
-                        <div class="code-block p-4 text-sm mt-2">
-                            <pre>&lt;img src="images/your-image.jpg" alt="画像の説明"&gt;</pre>
                         </div>
                     </div>
                 </section>
 
                 <!-- 3. イベントバナー -->
-                <section id="banner" class="guide-section bg-white rounded-xl shadow p-6 mb-6">
-                    <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+                <section class="guide-section card mb-6">
+                    <h3 class="section-subtitle flex items-center">
                         <span
                             class="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">3</span>
                         イベントバナーの設置
                     </h3>
                     <div class="space-y-4">
-                        <p class="text-gray-600">トップページにイベントバナーを表示するには、<code
-                                class="bg-gray-200 px-2 py-1 rounded">index.html</code>を編集します。</p>
-
-                        <h4 class="font-semibold text-gray-700">バナーを有効にする</h4>
-                        <p class="text-gray-600">index.htmlの該当部分のコメントを外します：</p>
+                        <p class="text-gray-600">トップページ（index.html）のコメントを外せばバナー表示できます</p>
                         <div class="code-block p-4 text-sm mt-2">
-                            <pre>&lt;!-- イベント告知バナー書き方 --&gt;
-&lt;div class="max-w-xl mx-auto mt-8 sm:mt-12 mb-6 sm:mb-8"&gt;
-  &lt;a href="events/イベントページ.html"
-    class="block bg-blue-600 hover:bg-blue-700 text-white text-center text-base sm:text-lg font-bold rounded-xl shadow-lg px-4 sm:px-6 py-4 sm:py-5 transition-all duration-200"&gt;
-    &lt;div class="leading-relaxed"&gt;イベントタイトル&lt;/div&gt;
-    &lt;div class="mt-2"&gt;
-      &lt;span class="text-yellow-300 text-lg sm:text-xl font-extrabold"&gt;日時情報&lt;/span&gt;
-    &lt;/div&gt;
+                            <pre>&lt;!-- イベント告知バナー --&gt;
+&lt;div class="max-w-xl mx-auto mt-8"&gt;
+  &lt;a href="events/イベント.html"
+    class="block bg-blue-600 text-white..."&gt;
+    イベントタイトル
   &lt;/a&gt;
 &lt;/div&gt;</pre>
                         </div>
-
-                        <h4 class="font-semibold text-gray-700 mt-4">バナーを非表示にする</h4>
-                        <p class="text-gray-600">イベント終了後は、<code
-                                class="bg-gray-200 px-2 py-1 rounded">&lt;!-- ... --&gt;</code>で囲んでコメントアウトします。</p>
                     </div>
                 </section>
 
-                <!-- 4. デプロイ方法 -->
-                <section id="deploy" class="guide-section bg-white rounded-xl shadow p-6 mb-6">
-                    <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+                <!-- 4. デプロイ -->
+                <section class="guide-section card mb-6">
+                    <h3 class="section-subtitle flex items-center">
                         <span
                             class="bg-orange-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">4</span>
                         デプロイ方法
                     </h3>
                     <div class="space-y-4">
                         <h4 class="font-semibold text-gray-700">自動デプロイ（推奨）</h4>
-                        <p class="text-gray-600">mainブランチにプッシュすると自動でビルドされます：</p>
                         <div class="code-block p-4 text-sm mt-2">
                             <pre>git add .
-git commit -m "変更内容の説明"
+git commit -m "変更内容"
 git push origin main</pre>
-                        </div>
-
-                        <h4 class="font-semibold text-gray-700 mt-4">リリースを作成する場合</h4>
-                        <div class="code-block p-4 text-sm mt-2">
-                            <pre>git tag v1.0.0
-git push origin v1.0.0</pre>
                         </div>
 
                         <h4 class="font-semibold text-gray-700 mt-4">手動ビルド</h4>
                         <div class="code-block p-4 text-sm mt-2">
-                            <pre>npm install       # 初回のみ
-npm run build     # ビルド実行
-# dist/フォルダの中身をサーバーにアップロード</pre>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 5. トラブルシューティング -->
-                <section id="trouble" class="guide-section bg-white rounded-xl shadow p-6 mb-6">
-                    <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
-                        <span
-                            class="bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">5</span>
-                        トラブルシューティング
-                    </h3>
-                    <div class="space-y-4">
-                        <div class="border-l-4 border-red-400 bg-red-50 p-4 rounded">
-                            <p class="font-semibold text-red-800">⚠️ ビルドエラーが発生した場合</p>
-                            <ol class="list-decimal list-inside mt-2 text-gray-700 space-y-1">
-                                <li>エラーメッセージを確認</li>
-                                <li>HTMLの閉じタグ漏れがないかチェック</li>
-                                <li><code class="bg-gray-200 px-1 rounded">npm run dev</code>でローカルテスト</li>
-                            </ol>
-                        </div>
-
-                        <div class="border-l-4 border-blue-400 bg-blue-50 p-4 rounded mt-4">
-                            <p class="font-semibold text-blue-800">🔄 前のバージョンに戻す場合</p>
-                            <div class="code-block p-2 text-sm mt-2">
-                                <pre>git log --oneline        # コミット履歴を確認
-git revert &lt;コミットID&gt;  # 変更を取り消し</pre>
-                            </div>
-                        </div>
-
-                        <div class="border-l-4 border-green-400 bg-green-50 p-4 rounded mt-4">
-                            <p class="font-semibold text-green-800">📞 困ったときは</p>
-                            <p class="mt-2 text-gray-700">GitHubのIssuesで質問・報告してください：</p>
-                            <a href="https://github.com/Altairu/monozukuri-lab/issues" target="_blank"
-                                class="text-blue-600 hover:underline">Issues ページを開く</a>
+                            <pre>npm install
+npm run build
+# dist/をサーバーにアップロード</pre>
                         </div>
                     </div>
                 </section>
@@ -315,15 +243,14 @@ git revert &lt;コミットID&gt;  # 変更を取り消し</pre>
             </div>
         </main>
 
-        <footer class="bg-gray-800 text-white text-center py-4">
+        <footer class="site-footer">
             <p>&copy; 2025 舞鶴高専 ものつくりラボ</p>
         </footer>
     </div>
 
-    <script type="module" src="js/mobile-menu.js"></script>
+    <script type="module" src="../js/mobile-menu.js"></script>
     <script>
         (function () {
-            // パスワード認証（クライアントサイド）
             const ADMIN_PASSWORD = 'monotukuri';
 
             const loginScreen = document.getElementById('login-screen');
@@ -354,7 +281,7 @@ git revert &lt;コミットID&gt;  # 変更を取り消し</pre>
                 adminContent.classList.remove('hidden');
             }
 
-            // ログアウト機能
+            // ログアウト
             document.addEventListener('click', function (e) {
                 if (e.target.id === 'logout-btn' || e.target.id === 'logout-btn-mobile') {
                     sessionStorage.removeItem('adminAuthenticated');

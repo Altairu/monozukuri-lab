@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>活動内容 | 舞鶴高専 ものつくりラボ</title>
+  <link rel="icon" type="image/png" href="../images/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <h1 class="site-title">舞鶴高専 ものつくりラボ</h1>
+      <!-- ハンバーガーメニューボタン (モバイル) -->
+      <button id="menu-toggle" class="hamburger-btn" aria-label="メニュー">
+        <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+        <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+        <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+      </button>
+      <!-- デスクトップナビゲーション -->
+      <nav class="nav-desktop">
+        <a href="../index.html" class="hover:text-blue-500">ホーム</a>
+        <a href="activities.html" class="hover:text-blue-500">活動</a>
+        <a href="facility.html" class="hover:text-blue-500">施設</a>
+        <a href="members.html" class="hover:text-blue-500">スタッフ</a>
+        <a href="contact.html" class="hover:text-blue-500">お問い合わせ</a>
+        <a href="game.html" class="hover:text-blue-500">ゲーム</a>
+      </nav>
+    </div>
+    <!-- モバイルメニュー -->
+    <nav id="mobile-menu" class="nav-mobile">
+      <div class="nav-mobile-inner">
+        <a href="../index.html" class="block py-2 hover:text-blue-500">ホーム</a>
+        <a href="activities.html" class="block py-2 hover:text-blue-500">活動</a>
+        <a href="facility.html" class="block py-2 hover:text-blue-500">施設</a>
+        <a href="members.html" class="block py-2 hover:text-blue-500">スタッフ</a>
+        <a href="contact.html" class="block py-2 hover:text-blue-500">お問い合わせ</a>
+        <a href="game.html" class="block py-2 hover:text-blue-500">ゲーム</a>
+      </div>
+    </nav>
+  </header>
+  <main class="site-main">
+    <h2 class="section-title">通常活動</h2>
+
+    <section class="mt-8 bg-white rounded-xl shadow p-6 max-w-xl mx-auto">
+      <h3 class="text-xl font-bold mb-2 text-blue-700">平日 放課後 いつでも（TAがいる日）</h3>
+      <li><span class="font-bold">日時：</span>平日（月～金）16時15分~18時15分まで</li>
+      <li><span class="font-bold">場所：</span>ものつくりラボ</li>
+      3Dプリンタ，レーザー加工機，カッティングマシンなど自由に使えます．
+      </ul>
+    </section>
+
+    </br>
+
+
+    <h2 class="section-title">イベント</h2>
+    <section class="mt-8 bg-white rounded-xl shadow p-6 max-w-xl mx-auto mb-6">
+      <a href="../events/3dcontest2025.html" class="block hover:bg-blue-50 rounded transition p-2 -m-2">
+        <h3 class="text-xl font-bold mb-2 text-blue-700 underline">夏休み 3Dプリンター活用 自由課題コンテスト 2025</h3>
+        <ul class="mb-2 list-disc list-inside text-gray-800">
+          <li><span class="font-bold">応募期間：</span>2025年8月8日～9月30日23:59まで</li>
+          <li><span class="font-bold">部門：</span>IoT部門／動くおもちゃ部門／造形部門</li>
+          <li><span class="font-bold">提出方法：</span>設計ファイル・コンセプトシートを専用フォームで提出</li>
+          <li><span class="font-bold">審査・表彰：</span>最優秀賞・優秀賞・特別賞あり</li>
+        </ul>
+        <span class="text-blue-500 text-sm">▶ 詳細を見る</span>
+      </a>
+    </section>
+    <section class="mt-8 bg-white rounded-xl shadow p-6 max-w-xl mx-auto">
+      <a href="../events/3dprinter2025.html" class="block hover:bg-blue-50 rounded transition p-2 -m-2">
+        <h3 class="text-xl font-bold mb-2 text-blue-700 underline">3Dプリンタ講習会</h3>
+        <ul class="mb-2 list-disc list-inside text-gray-800">
+          <li><span class="font-bold">日時：</span>令和7年6月16～20日（月～金）16時15分~</li>
+          <li><span class="font-bold">場所：</span>ものつくりラボ</li>
+          <li><span class="font-bold">対象：</span>3Dプリンタを使ってみたい人</li>
+          <li><span class="font-bold">定員：</span>各日先着３名はプリントまで可能</li>
+          <li>使い方講習のみ、見学は制限なし</li>
+        </ul>
+        <span class="text-blue-500 text-sm">▶ 詳細を見る</span>
+      </a>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; 2025 舞鶴高専 ものつくりラボ</p>
+  </footer>
+  <script type="module" src="../js/mobile-menu.js"></script>
+</body>
+
+</html>
