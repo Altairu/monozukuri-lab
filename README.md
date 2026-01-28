@@ -23,7 +23,7 @@ Vue 3 + Vite で構築された、舞鶴高専ものつくりラボの公式ウ�
 
 ```bash
 # GitHubからコードをダウンロード
-git clone https://github.com/Altairu/monozukuri-lab.git
+git clone https://github.com/monotukuri-lab/monotukuri-lab_HP
 cd monozukuri-lab
 ```
 
