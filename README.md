@@ -24,7 +24,6 @@ Vue 3 + Vite で構築された、舞鶴高専ものつくりラボの公式ウ�
 ```bash
 # GitHubからコードをダウンロード
 git clone https://github.com/monotukuri-lab/monotukuri-lab_HP
-cd monozukuri-lab
 ```
 
 ### 3. 依存関係をインストール
@@ -49,7 +48,7 @@ npm run dev
 ## 📁 プロジェクト構造
 
 ```
-monozukuri-lab/
+monotukuri-lab_HP/
 ├── index.html              # トップページ
 ├── pages/                  # 公開ページ（6ページ）
 │   ├── activities.html     # 活動ページ
