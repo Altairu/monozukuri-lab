@@ -28,6 +28,7 @@ export default defineConfig({
         secret2: resolve(__dirname, 'secret2.html'),
         '3dcontest2025': resolve(__dirname, 'events/3dcontest2025.html'),
         '3dprinter2025': resolve(__dirname, 'events/3dprinter2025.html'),
+        admin: resolve(__dirname, 'admin.html'),
       }
     }
   }
